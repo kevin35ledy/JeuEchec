@@ -140,7 +140,7 @@ public class King extends Piece
 
 							if(piece instanceof Pawn){
 									//si le roi n'est pas juste devant 
-									if (!(Math.abs(s.getPozY() - piece.getSquare().getPozY()) == 1) && s.getPozX() == piece.getSquare().getPozX()) {
+									if (!((Math.abs(s.getPozY() - piece.getSquare().getPozY()) == 1) && s.getPozX() == piece.getSquare().getPozX())) {
 										return false;
 									}
 							}
