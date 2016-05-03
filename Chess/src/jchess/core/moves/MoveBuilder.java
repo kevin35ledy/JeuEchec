@@ -3,15 +3,15 @@ package jchess.core.moves;
 import jchess.core.Chessboard;
 
 public abstract class MoveBuilder {
-	protected newMove move;
+	protected NewMove move;
 	protected Chessboard board;
 	
-	public newMove getMove(){
+	public NewMove getMove(){
 		return this.move;
 	}
 	
 	public void createNewMove(){
-		this.move = new newMove(board);		
+		this.move = new NewMove(board);		
 	}
 	
 	public abstract MoveBuilder xFrom(int xF);
