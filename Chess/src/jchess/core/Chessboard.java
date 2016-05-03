@@ -243,39 +243,7 @@ public class Chessboard
     {
         this.setActiveSquare(null);
     }
- 
-    public void move(Square begin, Square end)
-    {
-        move(begin, end, true);
-    }
 
-    /** Method to move piece over chessboard
-     * @param xFrom from which x move piece
-     * @param yFrom from which y move piece
-     * @param xTo to which x move piece
-     * @param yTo to which y move piece
-     */
-    public void move(int xFrom, int yFrom, int xTo, int yTo)
-    {
-        Square fromSQ = null;
-        Square toSQ = null;
-        try
-        {
-            fromSQ = this.getSquares()[xFrom][yFrom];
-            toSQ = this.getSquares()[xTo][yTo];
-        }
-        catch (java.lang.IndexOutOfBoundsException exc)
-        {
-            LOG.error("error moving piece: " + exc.getMessage());
-            return;
-        }
-        this.move(fromSQ, toSQ, true);
-    }
-
-    public void move(Square begin, Square end, boolean refresh)
-    {
-        this.move(begin, end, refresh, true);
-    }
 
     /** Method move piece from square to square
      * @param begin square from which move piece

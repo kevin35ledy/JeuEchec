@@ -390,7 +390,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
             getChessboard().select(begin);
             if (getChessboard().getActiveSquare().getPiece().getAllMoves().contains(end)) //move
             {
-                getChessboard().move(begin, end);
+                getChessboard().move(begin, end, true, true);
             }
             else
             {
@@ -547,7 +547,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
                     {
                         if (getSettings().getGameType() == Settings.gameTypes.local)
                         {
-                            getChessboard().move(getChessboard().getActiveSquare(), sq);
+                            getChessboard().move(getChessboard().getActiveSquare(), sq, true, true);
                         }
 
 

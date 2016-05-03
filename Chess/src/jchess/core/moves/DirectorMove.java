@@ -8,7 +8,7 @@ public class DirectorMove {
 		moveBuilder= mb;
 	}
 	
-	public newMove getMove(){
+	public NewMove getMove(){
 		return moveBuilder.getMove();
 	}
 	
