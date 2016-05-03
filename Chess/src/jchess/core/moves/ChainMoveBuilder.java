@@ -1,5 +1,7 @@
 package jchess.core.moves;
 
+import jchess.core.Chessboard;
+
 public class ChainMoveBuilder extends MoveBuilder {
 
 	@Override
@@ -25,5 +27,8 @@ public class ChainMoveBuilder extends MoveBuilder {
 		move.setXFrom(yTo);	
 		return this;	
 	}
-
+	
+	public ChainMoveBuilder(Chessboard cb){
+		this.board = cb;
+	}
 }

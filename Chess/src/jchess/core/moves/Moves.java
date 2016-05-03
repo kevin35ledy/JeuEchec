@@ -57,6 +57,7 @@ public class Moves extends AbstractTableModel
     {
         Settings.lang("white"), Settings.lang("black")
     };
+    
     private MyDefaultTableModel tableModel;
     private JScrollPane scrollPane;
     private JTable table;
