@@ -279,7 +279,7 @@ public class Chessboard
 
     /** Method move piece from square to square
      * @param begin square from which move piece
-     * @param end square where we want to move piece         *
+     * @param end square where we want to move piece
      * @param refresh chessboard, default: true
      * */
     public void move(Square begin, Square end, boolean refresh, boolean clearForwardHistory)
