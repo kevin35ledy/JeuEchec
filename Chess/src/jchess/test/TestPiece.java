@@ -5,6 +5,8 @@ import jchess.core.Chessboard;
 import jchess.core.Colors;
 import jchess.core.Game;
 import jchess.core.Square;
+import jchess.core.moves.ChainMoveBuilder;
+import jchess.core.moves.MoveBuilder;
 import jchess.core.moves.Moves;
 import jchess.core.pieces.Piece;
 import jchess.core.pieces.implementation.Bishop;
@@ -90,7 +92,9 @@ public class TestPiece {
 
         assertNull(board.getSquare(4, 4).getPiece()); // nothing there
         // e2 (4, 6) e4 (4, 4)
-        board.move(4, 6, 4, 4);
+    	ChainMoveBuilder chainmb3 = new ChainMoveBuilder(board);
+    	chainmb3.xFrom(4).yFrom(6).xTo(4).yTo(4).move();
+        //board.move(4, 6, 4, 4);
 
         // #4 bad API design
         //assertEquals(1, board.getMoves().size());
@@ -108,12 +112,16 @@ public class TestPiece {
 
     @Test
     public void testBishop1() throws Exception {
-
+    	//TODO
+    	ChainMoveBuilder chainmb = new ChainMoveBuilder(board);
+    	chainmb.xFrom(4).yFrom(6).xTo(5).yTo(6).move();
         // e2 (4, 6) e4 (5, 4)
-        board.move(4, 6, 4, 4);
-
+        //board.move(4, 6, 4, 4);
+        
         // e7 (4, 1) e5 (4, 3)
-        board.move(4, 1, 4, 3);
+    	ChainMoveBuilder chainmb2 = new ChainMoveBuilder(board);
+    	chainmb2.xFrom(4).yFrom(1).xTo(4).yTo(3).move();
+        //board.move(4, 1, 4, 3);
 
 
         assertNull(board.getSquare(4, 1).getPiece()); // now the pawn is not present in e7
@@ -135,10 +143,14 @@ public class TestPiece {
     public void testBishop2() throws Exception {
 
         // d2 (3, 6) d4 (3, 4)
-        board.move(3, 6, 3, 4);
+    	ChainMoveBuilder chainmb2 = new ChainMoveBuilder(board);
+    	chainmb2.xFrom(4).yFrom(1).xTo(4).yTo(3).move();
+        //board.move(3, 6, 3, 4);
 
         // e7 (4, 1) e5 (4, 3)
-        board.move(4, 1, 4, 3);
+    	ChainMoveBuilder chainmb4 = new ChainMoveBuilder(board);
+    	chainmb4.xFrom(4).yFrom(1).xTo(4).yTo(3).move();
+    	//board.move(4, 1, 4, 3);
 
         // bishop in c1
         Piece b1 = board.getSquare(2, 7).getPiece();

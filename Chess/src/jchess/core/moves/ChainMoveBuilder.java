@@ -4,31 +4,33 @@ import jchess.core.Chessboard;
 
 public class ChainMoveBuilder extends MoveBuilder {
 
-	@Override
-	public MoveBuilder xFrom(int xF) {
-		move.setXFrom(xF);	
-		return this;
-	}
-
-	@Override
-	public MoveBuilder yFrom(int yF) {
-		move.setXFrom(yF);	
-		return this;
-	}
-
-	@Override
-	public MoveBuilder xTo(int xTo) {
-		move.setXFrom(xTo);	
-		return this;
-	}
-
-	@Override
-	public MoveBuilder yTo(int yTo) {
-		move.setXFrom(yTo);	
-		return this;	
-	}
 	
 	public ChainMoveBuilder(Chessboard cb){
 		this.board = cb;
 	}
+	
+	public ChainMoveBuilder xFrom(int xF) {
+		move.setXFrom(xF);	
+		return this;
+	}
+
+	
+	public ChainMoveBuilder yFrom(int yF) {
+		move.setXFrom(yF);	
+		return this;
+	}
+
+	
+	public ChainMoveBuilder xTo(int xTo) {
+		move.setXFrom(xTo);	
+		return this;
+	}
+
+	
+	public ChainMoveBuilder yTo(int yTo) {
+		move.setXFrom(yTo);	
+		return this;	
+	}
+	
+
 }
