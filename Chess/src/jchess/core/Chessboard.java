@@ -52,6 +52,9 @@ public class Chessboard
 {
     private static final Logger LOG = Logger.getLogger(Chessboard.class);
     
+    protected static final int TOP = 0;
+    
+    protected static final int BOTTOM = 7;
     
     /*
      * squares of chessboard
@@ -62,17 +65,7 @@ public class Chessboard
     
     private Settings settings;
     
-    
-    
-    protected static final int TOP = 0;
-    
-    protected static final int BOTTOM = 7;
-    
-    protected static int BOTTOMLIGNE;
-    protected static int BOTTOMCOLONNE;
-    
-    
-	protected King kingWhite;
+    protected King kingWhite;
     
     protected King kingBlack;
     
@@ -102,17 +95,14 @@ public class Chessboard
     {
         this.settings = settings;
         this.chessboardView = new Chessboard2D(this);
-        
-        BOTTOMLIGNE = settings.getNbLigne();
-        BOTTOMCOLONNE = settings.getNbColonne();
 
         this.activeSquareX = 0;
         this.activeSquareY = 0;
         
-        if (settings.getNbColonne() < 8 || settings.getNbLigne() < 8) {
+      /*  if (settings.getSize() < 8) {
 			Chessboard.LOG.log(Level.ERROR, "settings.getSize() < 8. Can't initialize. Exit");
-        }       
-        
+        }
+*/        
         initPiecesOnBoard();
         
         this.Moves = Moves;
@@ -120,13 +110,11 @@ public class Chessboard
     }/*--endOf-Chessboard--*/
 
 	public void initPiecesOnBoard() {
-		int nbL = settings.getNbLigne();
-		int nbC = settings.getNbColonne();
-		this.squares = new Square[nbL][nbC];//initalization of 8x8 chessboard
+		this.squares = new Square[8][8];//initalization of 8x8 chessboard
 
-        for (int i = 0; i < nbL; i++) //create object for each square
+        for (int i = 0; i < 8; i++) //create object for each square
         {
-            for (int y = 0; y < nbC; y++)
+            for (int y = 0; y < 8; y++)
             {
                 this.squares[i][y] = new Square(i, y, null);
             }
@@ -148,17 +136,6 @@ public class Chessboard
     {
         return BOTTOM;
     }
-    
-    public static int getBOTTOMCOLONNE() {
-		return BOTTOMCOLONNE;
-	}
-
-    public static int getBOTTOMLIGNE() {
-		return BOTTOMLIGNE;
-	}
-    
-    
-    
     /** Method setPieces on begin of new game or loaded game
      * @param places string with pieces to set on chessboard
      * @param plWhite reference to white player

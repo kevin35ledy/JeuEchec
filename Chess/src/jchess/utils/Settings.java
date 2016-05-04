@@ -33,30 +33,55 @@ import jchess.core.Colors;
  */
 public class Settings implements Serializable
 {
-    private static final Logger LOG = Logger.getLogger(Settings.class);
-    
-
-    protected int nbLigne; 
-    protected int nbColonne; 
-    
+	private static final long serialVersionUID = 1L;
+	private static final Logger LOG = Logger.getLogger(Settings.class);
     private static ResourceBundle loc = null;
+    private int timeForGame;
+    private boolean runningChat;
+    private boolean runningGameClock;
     
-    protected int timeForGame;
-    
-    protected boolean runningChat;
-    
-    protected boolean runningGameClock;
     
     /**
      * tel us if player choose time 4 game or it's infinity
      */
-    protected boolean timeLimitSet = false;
+    private boolean timeLimitSet = false;
+    private boolean upsideDown;
+    private boolean displayLegalMovesEnabled = true;
+    private gameModes gameMode;
+    private Player playerWhite;
+    private Player playerBlack;
+    private gameTypes gameType;
+    private boolean renderLabels = true;
+    private int size;
+    private String type;
+
+    public enum gameTypes
+    {
+
+        local, network
+    }
+
+    public enum gameModes
+    {
+        newGame, loadGame
+    }
     
-    protected boolean upsideDown;
-    
-    protected boolean displayLegalMovesEnabled = true;
-    
-    
+
+
+    public Settings()
+    {
+    	//Load default settings
+        this.playerWhite = new Player("", Colors.WHITE.getColorName());
+        this.playerBlack = new Player("", Colors.BLACK.getColorName());
+        this.timeLimitSet = false;
+        this.upsideDown = false;
+
+        gameMode = gameModes.newGame;
+        gameType = gameTypes.local;
+        
+        this.size = 8;
+        this.type = "classical";
+    }
 
     /**
      * @return the runningChat
@@ -117,6 +142,16 @@ public class Settings implements Serializable
     public gameTypes getGameType()
     {
         return gameType;
+    }
+    
+    public String getTypeMode()
+    {
+    	return type;
+    }
+    
+    public void setTypeMode(String t)
+    {
+    	type = t;
     }
 
     /**
@@ -181,35 +216,6 @@ public class Settings implements Serializable
         this.displayLegalMovesEnabled = displayLegalMovesEnabled;
     }
 
-    public enum gameModes
-    {
-        newGame, loadGame
-    }
-    protected gameModes gameMode;
-    protected Player playerWhite;
-    protected Player playerBlack;
-
-    public enum gameTypes
-    {
-
-        local, network
-    }
-    protected gameTypes gameType;
-    protected boolean renderLabels = true;
-
-    public Settings()
-    {
-        //temporally
-        this.playerWhite = new Player("", Colors.WHITE.getColorName());
-        this.playerBlack = new Player("", Colors.BLACK.getColorName());
-        this.timeLimitSet = false;
-        
-        this.nbLigne = 8; //default
-        this.nbColonne = 8 ; //default
-
-        gameMode = gameModes.newGame;
-    }
-
     /** Method to get game time set by player
      *  @return timeFofGame int with how long the game will leasts
      */
@@ -237,21 +243,13 @@ public class Settings implements Serializable
         LOG.debug("Locale: " + Settings.loc.getLocale().toString());
         return result;
     }
-    
-    
-    
-    
-    public int getNbLigne(){
-    	return this.nbLigne;
-    }
-    public void setNbLigne(int nbLigne){
-    	this.nbLigne = nbLigne;
-    }
-    public int getNbColonne(){
-    	return this.nbColonne;
-    }
-    public void setNbColonne(int nbColonne){
-    	this.nbColonne = nbColonne;
-    }
-    
+
+	public int getSize() {
+		return this.size;
+	}
+	
+	public void setSize(int newValue)
+	{
+		this.size = newValue;
+	}
 }
