@@ -52,9 +52,6 @@ public class Chessboard
 {
     private static final Logger LOG = Logger.getLogger(Chessboard.class);
     
-    protected static final int TOP = 0;
-    
-    protected static final int BOTTOM = 7;
     
     /*
      * squares of chessboard
@@ -65,7 +62,17 @@ public class Chessboard
     
     private Settings settings;
     
-    protected King kingWhite;
+    
+    
+    protected static final int TOP = 0;
+    
+    protected static final int BOTTOM = 7;
+    
+    protected static int BOTTOMLIGNE;
+    protected static int BOTTOMCOLONNE;
+    
+    
+	protected King kingWhite;
     
     protected King kingBlack;
     
@@ -95,22 +102,36 @@ public class Chessboard
     {
         this.settings = settings;
         this.chessboardView = new Chessboard2D(this);
+        
+        BOTTOMLIGNE = settings.getNbLigne();
+        BOTTOMCOLONNE = settings.getNbColonne();
 
         this.activeSquareX = 0;
         this.activeSquareY = 0;
         
-        this.squares = new Square[8][8];//initalization of 8x8 chessboard
+        if (settings.getNbColonne() < 8 || settings.getNbLigne() < 8) {
+			Chessboard.LOG.log(Level.ERROR, "settings.getSize() < 8. Can't initialize. Exit");
+        }       
+        
+        initPiecesOnBoard();
+        
+        this.Moves = Moves;
 
-        for (int i = 0; i < 8; i++) //create object for each square
+    }/*--endOf-Chessboard--*/
+
+	public void initPiecesOnBoard() {
+		int nbL = settings.getNbLigne();
+		int nbC = settings.getNbColonne();
+		this.squares = new Square[nbL][nbC];//initalization of 8x8 chessboard
+
+        for (int i = 0; i < nbL; i++) //create object for each square
         {
-            for (int y = 0; y < 8; y++)
+            for (int y = 0; y < nbC; y++)
             {
                 this.squares[i][y] = new Square(i, y, null);
             }
         }//--endOf--create object for each square
-        this.Moves = Moves;
-
-    }/*--endOf-Chessboard--*/
+	}
 
     /**
      * @return the top
@@ -127,6 +148,17 @@ public class Chessboard
     {
         return BOTTOM;
     }
+    
+    public static int getBOTTOMCOLONNE() {
+		return BOTTOMCOLONNE;
+	}
+
+    public static int getBOTTOMLIGNE() {
+		return BOTTOMLIGNE;
+	}
+    
+    
+    
     /** Method setPieces on begin of new game or loaded game
      * @param places string with pieces to set on chessboard
      * @param plWhite reference to white player
@@ -243,7 +275,39 @@ public class Chessboard
     {
         this.setActiveSquare(null);
     }
+ 
+    public void move(Square begin, Square end)
+    {
+        move(begin, end, true);
+    }
 
+    /** Method to move piece over chessboard
+     * @param xFrom from which x move piece
+     * @param yFrom from which y move piece
+     * @param xTo to which x move piece
+     * @param yTo to which y move piece
+     */
+    public void move(int xFrom, int yFrom, int xTo, int yTo)
+    {
+        Square fromSQ = null;
+        Square toSQ = null;
+        try
+        {
+            fromSQ = this.getSquares()[xFrom][yFrom];
+            toSQ = this.getSquares()[xTo][yTo];
+        }
+        catch (java.lang.IndexOutOfBoundsException exc)
+        {
+            LOG.error("error moving piece: " + exc.getMessage());
+            return;
+        }
+        this.move(fromSQ, toSQ, true);
+    }
+
+    public void move(Square begin, Square end, boolean refresh)
+    {
+        this.move(begin, end, refresh, true);
+    }
 
     /** Method move piece from square to square
      * @param begin square from which move piece

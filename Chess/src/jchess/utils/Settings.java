@@ -35,6 +35,10 @@ public class Settings implements Serializable
 {
     private static final Logger LOG = Logger.getLogger(Settings.class);
     
+
+    protected int nbLigne; 
+    protected int nbColonne; 
+    
     private static ResourceBundle loc = null;
     
     protected int timeForGame;
@@ -51,6 +55,8 @@ public class Settings implements Serializable
     protected boolean upsideDown;
     
     protected boolean displayLegalMovesEnabled = true;
+    
+    
 
     /**
      * @return the runningChat
@@ -197,6 +203,9 @@ public class Settings implements Serializable
         this.playerWhite = new Player("", Colors.WHITE.getColorName());
         this.playerBlack = new Player("", Colors.BLACK.getColorName());
         this.timeLimitSet = false;
+        
+        this.nbLigne = 8; //default
+        this.nbColonne = 8 ; //default
 
         gameMode = gameModes.newGame;
     }
@@ -228,4 +237,21 @@ public class Settings implements Serializable
         LOG.debug("Locale: " + Settings.loc.getLocale().toString());
         return result;
     }
+    
+    
+    
+    
+    public int getNbLigne(){
+    	return this.nbLigne;
+    }
+    public void setNbLigne(int nbLigne){
+    	this.nbLigne = nbLigne;
+    }
+    public int getNbColonne(){
+    	return this.nbColonne;
+    }
+    public void setNbColonne(int nbColonne){
+    	this.nbColonne = nbColonne;
+    }
+    
 }
