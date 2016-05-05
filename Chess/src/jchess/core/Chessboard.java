@@ -22,6 +22,7 @@ import jchess.core.pieces.implementation.King;
 import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Queen;
 import jchess.core.pieces.implementation.Rook;
+import jchess.core.pieces.implementation.Sorcier;
 import jchess.core.pieces.implementation.Pawn;
 import jchess.core.pieces.implementation.Bishop;
 import jchess.core.pieces.Piece;
@@ -167,9 +168,32 @@ public class Chessboard
         this.setPawns4NewGame(1, player);
         this.setFigures4NewGame(7, player1);
         this.setPawns4NewGame(6, player1);
+        
+        //TODO
+        this.setSorcier4NewGame(2, player);
+        this.setSorcier4NewGame(5, player1);
     }/*--endOf-setPieces(boolean upsideDown)--*/
 
 
+    //TODO put a Sorcier
+    /**
+     * 
+     */
+    private void setSorcier4NewGame(int i, Player player){
+    	if(i != 2 && i != 5){
+    		LOG.error("error setting sorcier");
+            return;
+    	}
+    	else if (i == 2)
+        {
+            player.goDown = true;
+        }
+    	this.getSquare(3, i).setPiece(new Sorcier(this, player));
+    	this.getSquare(4, i).setPiece(new Sorcier(this, player));
+    }
+    
+    
+    
     /**  
      *  Method to set Figures in row (and set Queen and King to right position)
      *  @param i row where to set figures (Rook, Knight etc.)

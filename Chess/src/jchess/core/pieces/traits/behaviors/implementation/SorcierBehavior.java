@@ -16,6 +16,22 @@ public class SorcierBehavior extends Behavior{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * this piece has the behavior of the knight -> cf Sorcier implementation
+	 * and can eat or move on the three square in front of it (however it can eat the piece in front of it
+	 * 
+	 * //  _______________ Y:<br/>
+        // |_|_|_|_|_|_|_|_|7<br/>
+        // |_|_|_|_|_|_|_|_|6<br/>
+        // |_|_|X|_|X|_|_|_|5<br/>
+        // |_|X|X|X|X|X|_|_|4<br/>
+        // |_|_|_|S|_|_|_|_|3<br/>
+        // |_|X|_|_|_|X|_|_|2<br/>
+        // |_|_|X|_|X|_|_|_|1<br/>
+        // |_|_|_|_|_|_|_|_|0<br/>
+        //X:0 1 2 3 4 5 6 7
+	 */
 	@Override
 	public Set<Square> getSquaresInRange() {
 		// TODO Auto-generated method stub
