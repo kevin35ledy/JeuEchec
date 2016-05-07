@@ -521,6 +521,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
 
             if (!isChessboardBlocked())
             {
+            	
                 try 
                 {
                     int x = event.getX();//get X position of mouse
@@ -586,6 +587,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
                     getChessboard().repaint();
                     return;
                 }
+                this.gameClock.start();
             }
             else if (isChessboardBlocked())
             {

@@ -39,10 +39,10 @@ public class GameClock extends JPanel implements Runnable
     private Settings settings;
     private Thread thread;
     private Game game;
-    private Graphics g;
+//    private Graphics g;
     private String white_clock, black_clock;
     private BufferedImage background;
-    private Graphics bufferedGraphics;
+//    private Graphics bufferedGraphics;
 
     GameClock(Game game)
     {
@@ -117,7 +117,7 @@ public class GameClock extends JPanel implements Runnable
         g2d.drawString(settings.getPlayerWhite().getName(), 10, 50);
         g2d.setColor(Color.WHITE);
         g2d.drawString(settings.getPlayerBlack().getName(), 100, 50);
-        this.bufferedGraphics = this.background.getGraphics();
+        //this.bufferedGraphics = this.background.getGraphics();
     }
 
     /**
@@ -226,6 +226,7 @@ public class GameClock extends JPanel implements Runnable
             {
                 if (this.runningClock.decrement())
                 {
+                	System.out.println("JE SUIS ICI !");
                     repaint();
                     try
                     {
