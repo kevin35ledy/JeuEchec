@@ -22,6 +22,7 @@ import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Pawn;
 import jchess.core.pieces.implementation.Queen;
 import jchess.core.pieces.implementation.Rook;
+import jchess.core.pieces.implementation.Sorcier;
 import jchess.display.views.chessboard.ChessboardView;
 import jchess.utils.GUI;
 import org.apache.log4j.Logger;
@@ -119,7 +120,7 @@ public class Pieces2D
         result.put(Rook.class.getName(), GUI.loadPieceImage(Rook.class.getSimpleName(), color, size, FILE_EXT));
         result.put(King.class.getName(), GUI.loadPieceImage(King.class.getSimpleName(), color, size, FILE_EXT));
         result.put(Bishop.class.getName(), GUI.loadPieceImage(Bishop.class.getSimpleName(), color, size, FILE_EXT));    
-        
+        result.put(Sorcier.class.getName(), GUI.loadPieceImage(Sorcier.class.getSimpleName(), color, size, FILE_EXT));
         return result;
     }
     

@@ -587,7 +587,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
                     getChessboard().repaint();
                     return;
                 }
-                this.gameClock.start();
+               // this.gameClock.start();
             }
             else if (isChessboardBlocked())
             {

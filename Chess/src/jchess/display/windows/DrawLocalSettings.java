@@ -64,7 +64,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
     
     String times[] =
     {
-        "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120"
+        "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120", "200"
     };
         
     /** 
