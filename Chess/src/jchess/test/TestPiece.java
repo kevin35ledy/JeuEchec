@@ -19,6 +19,8 @@ import jchess.core.pieces.implementation.Bishop;
 import jchess.core.pieces.implementation.King;
 import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Pawn;
+import jchess.core.visitor.ContextVisitor;
+import jchess.core.visitor.PointsVisitor;
 import jchess.utils.Settings;
 
 /**
@@ -52,6 +54,11 @@ public class TestPiece {
         // board.getMoves() != moves :(
 
 
+    }
+    
+    @Test
+    public void testScore(){
+    	board.accept(new PointsVisitor());
     }
 
     @Test
