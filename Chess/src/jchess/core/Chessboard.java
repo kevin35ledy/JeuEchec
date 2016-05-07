@@ -23,6 +23,8 @@ import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Queen;
 import jchess.core.pieces.implementation.Rook;
 import jchess.core.pieces.implementation.Sorcier;
+import jchess.core.ContextStrat;
+import jchess.core.RandomPlacement;
 import jchess.core.pieces.implementation.Pawn;
 import jchess.core.pieces.implementation.Bishop;
 import jchess.core.pieces.Piece;

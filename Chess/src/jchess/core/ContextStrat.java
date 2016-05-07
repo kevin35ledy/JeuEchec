@@ -1,5 +1,8 @@
 package jchess.core;
 
+import jchess.core.Chessboard;
+import jchess.core.Player;
+
 public class ContextStrat {
 	private PlacementStrat _strat;
 	
