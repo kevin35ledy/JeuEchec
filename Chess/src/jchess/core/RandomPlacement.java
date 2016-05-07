@@ -14,21 +14,6 @@ import jchess.core.pieces.implementation.Sorcier;
 public class RandomPlacement implements PlacementStrat {
 
 	private Chessboard _chess;
-	// @Override
-	// public void setPieces(Player plWhite, Player plBlack, Chessboard chess) {
-	// this._chess = chess;
-	// Player player = plBlack;
-	// Player player1 = plWhite;
-	// this.setFigures4NewGame(0, player);
-	// this.setPawns4NewGame(1, player);
-	// this.setFigures4NewGame(7, player1);
-	// this.setPawns4NewGame(6, player1);
-	//
-	// //TODO
-	// this.setSorcier4NewGame(2, player);
-	// this.setSorcier4NewGame(5, player1);
-	//
-	// }
 
 	@Override
 	public void setPieces(Player plWhite, Player plBlack, Chessboard chess) {
@@ -49,9 +34,15 @@ public class RandomPlacement implements PlacementStrat {
 			Piece bishop1 = new Bishop(_chess, pl);
 			Piece pawn = new Pawn(_chess, pl);
 			Piece pawn1 = new Pawn(_chess, pl);
+			Piece pawn2 = new Pawn(_chess, pl);
+			Piece pawn3 = new Pawn(_chess, pl);
+			Piece pawn4 = new Pawn(_chess, pl);
+			Piece pawn5 = new Pawn(_chess, pl);
+			Piece pawn6 = new Pawn(_chess, pl);
+			Piece pawn7 = new Pawn(_chess, pl);
 			Piece knight = new Knight(_chess, pl);
 			Piece knight1 = new Knight(_chess, pl);
-			Piece[] pieces = { sorcier, sorcier1, king, queen, rook, rook1, bishop, bishop1, pawn, pawn1, knight,
+			Piece[] pieces = { sorcier, sorcier1, king, queen, rook, rook1, bishop, bishop1, pawn, pawn1,pawn2, pawn3,pawn4,pawn5,pawn6,pawn7, knight,
 					knight1 };
 			for (Piece p : pieces) {
 				int x = random.nextInt(8);
