@@ -16,6 +16,7 @@
 package jchess.core;
 
 import jchess.core.pieces.Piece;
+import jchess.core.visitor.Visitor;
 
 /**
  * @author: Mateusz Sławomir Lach ( matlak, msl )
@@ -107,4 +108,9 @@ public class Square
     {
         return null == this.piece || this.piece == piece;
     }
+    
+    public void accept(Visitor vis){
+    	vis.visit(this);
+    }
+    
 }

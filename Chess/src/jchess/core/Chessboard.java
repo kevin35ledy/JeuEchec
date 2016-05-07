@@ -23,6 +23,7 @@ import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Queen;
 import jchess.core.pieces.implementation.Rook;
 import jchess.core.pieces.implementation.Sorcier;
+import jchess.core.visitor.Visitor;
 import jchess.core.ContextStrat;
 import jchess.core.RandomPlacement;
 import jchess.core.pieces.implementation.Pawn;
@@ -161,6 +162,14 @@ public class Chessboard
         }
     }/*--endOf-setPieces--*/
 
+    public void accept(Visitor vis){
+    	for(int i = 0; i<this.settings.getSize(); i++){
+    		for(int j= 0; j<this.settings.getSize(); j++){
+    			squares[i][j].accept(vis);
+    		}
+    	}
+    	vis.visit(this);
+    }
 
 //    /**
 //     *
