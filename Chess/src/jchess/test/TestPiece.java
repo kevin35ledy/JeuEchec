@@ -20,6 +20,7 @@ import jchess.core.pieces.implementation.King;
 import jchess.core.pieces.implementation.Knight;
 import jchess.core.pieces.implementation.Pawn;
 import jchess.core.visitor.ContextVisitor;
+import jchess.core.visitor.NumberVisitor;
 import jchess.core.visitor.PointsVisitor;
 import jchess.utils.Settings;
 
@@ -59,6 +60,7 @@ public class TestPiece {
     @Test
     public void testScore(){
     	board.accept(new PointsVisitor());
+    	board.accept(new NumberVisitor());
     }
 
     @Test
