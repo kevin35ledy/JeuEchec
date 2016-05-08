@@ -118,10 +118,8 @@ public class Player implements Serializable
     
     public void move(Chessboard chess)
     {
-    	System.out.println("PLAYER ! " + this.ai);
     	if(this.ai != null){
-    		System.out.println("HERE");
-    		this.ai.move(chess);
+    		this.ai.move(chess, this.color);
     	}
     }
 }
