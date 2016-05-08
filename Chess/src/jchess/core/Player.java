@@ -22,6 +22,8 @@ package jchess.core;
 
 import java.io.Serializable;
 
+import jchess.core.AI.AIStrat;
+
 
 /**
  * Class representing the player in the game
@@ -41,6 +43,8 @@ public class Player implements Serializable
     protected playerTypes playerType;
     
     protected boolean goDown;
+    
+    private AIStrat ai;
 
     /**
      * Empty constructor.
@@ -57,6 +61,7 @@ public class Player implements Serializable
         this.name = name;
         this.color = Colors.valueOf(color.toUpperCase());
         this.goDown = false;
+        this.ai = null;
     }
 
     /** Method setting the players name
@@ -106,4 +111,17 @@ public class Player implements Serializable
     {
         return goDown;
     }    
+    
+    public void setAI(AIStrat ai){
+    	this.ai = ai;
+    }
+    
+    public void move(Chessboard chess)
+    {
+    	System.out.println("PLAYER ! " + this.ai);
+    	if(this.ai != null){
+    		System.out.println("HERE");
+    		this.ai.move(chess);
+    	}
+    }
 }

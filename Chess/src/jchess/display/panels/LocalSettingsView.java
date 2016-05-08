@@ -43,7 +43,7 @@ public class LocalSettingsView extends JPanel implements ActionListener
     private JComboBox time4Game;
     private String times[] =
     {
-         "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120", "200"
+         "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120", "250"
     };
     
     public LocalSettingsView(Game game)

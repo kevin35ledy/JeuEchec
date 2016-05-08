@@ -194,7 +194,7 @@ public class Moves extends AbstractTableModel
         else
         {
             locMove += Character.toString((char) (begin.getPozX() + 97));//add letter of Square from which move was made
-            locMove += Integer.toString(8 - begin.getPozY());//add number of Square from which move was made
+            locMove += Integer.toString(8 - begin.getPozY());//add numbeString commentr of Square from which move was made
         }
         
         if (end.piece != null)

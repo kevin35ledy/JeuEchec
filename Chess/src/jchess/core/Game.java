@@ -357,7 +357,6 @@ public class Game extends JPanel implements ComponentListener, MouseListener
     public void nextMove()
     {
         switchActive();
-
         LOG.debug("next move, active player: " + activePlayer.getName() + 
                   ", color: " + activePlayer.getColor().name() + 
                   ", type: " + activePlayer.getPlayerType().name()
@@ -372,8 +371,37 @@ public class Game extends JPanel implements ComponentListener, MouseListener
         }
         else if (activePlayer.getPlayerType() == Player.playerTypes.computer)
         {
+        	
+        	checkIfFinish();
+        	activePlayer.move(chessboard);
+        	checkIfFinish();
+        	nextMove();
         }
     }
+    
+    private void checkIfFinish() {
+    	//checkmate or stalemate
+        King king;
+        if (this.activePlayer == getSettings().getPlayerWhite())
+        {
+            king = getChessboard().getKingWhite();
+        }
+        else
+        {
+            king = getChessboard().getKingBlack();
+        }
+
+        switch (king.isCheckmatedOrStalemated())
+        {
+            case 1:
+                this.endGame("Checkmate! " + king.getPlayer().getColor().toString() + " player lose!");
+                break;
+            case 2:
+                this.endGame("Stalemate! Draw!");
+                break;
+        }
+		
+	}
 
     /** Method to simulate Move to check if it's correct etc. (usable for network game).
      * @param beginX from which X (on chessboard) move starts
