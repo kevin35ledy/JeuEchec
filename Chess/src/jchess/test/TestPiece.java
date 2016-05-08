@@ -12,6 +12,7 @@ import jchess.core.Chessboard;
 import jchess.core.Colors;
 import jchess.core.Game;
 import jchess.core.Square;
+import jchess.core.AI.RandomAI;
 import jchess.core.moves.ChainMoveBuilder;
 import jchess.core.moves.MoveBuilder;
 import jchess.core.pieces.Piece;
@@ -56,6 +57,7 @@ public class TestPiece {
 
 
     }
+    
     
     @Test
     public void testScore(){

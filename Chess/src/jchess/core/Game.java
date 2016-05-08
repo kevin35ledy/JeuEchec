@@ -371,11 +371,14 @@ public class Game extends JPanel implements ComponentListener, MouseListener
         }
         else if (activePlayer.getPlayerType() == Player.playerTypes.computer)
         {
-        	
+        	this.blockedChessboard = true;
+        	System.out.println("JE BOUGE UNE PIECE");
+        	//chessboard.move(chessboard.getSquare(0, 1), chessboard.getSquare(0, 2));
         	checkIfFinish();
         	activePlayer.move(chessboard);
         	checkIfFinish();
-        	nextMove();
+        	this.nextMove();
+        	this.blockedChessboard = false;
         }
     }
     
