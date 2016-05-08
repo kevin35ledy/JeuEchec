@@ -25,7 +25,7 @@ import jchess.core.Square;
 
 public class Move
 {
-
+	
     protected Square from = null;
     protected Square to = null;
     protected Piece movedPiece = null;

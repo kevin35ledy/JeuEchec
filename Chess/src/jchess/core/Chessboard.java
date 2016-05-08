@@ -151,7 +151,8 @@ public class Chessboard {
 	 *            reference to black player
 	 */
 	public void setPieces(String places, Player plWhite, Player plBlack) {
-		ContextStrat context = new ContextStrat(new StandardPlacement());
+		//ContextStrat context = new ContextStrat(new StandardPlacement());
+		ContextStrat context = new ContextStrat(new RandomPlacement());
 
 		if (places.equals("")) // if newGame
 		{
