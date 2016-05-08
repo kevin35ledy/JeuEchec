@@ -36,43 +36,28 @@ public class SorcierBehavior extends Behavior{
 	public Set<Square> getSquaresInRange() {
 		// TODO Auto-generated method stub
 		Set<Square> list = new HashSet<>();
-        Square sqToMove;//square we want to move to
         Chessboard chessboard = piece.getChessboard();
 
-        int first = piece.getSquare().getPozY() - 1;
+        int ligneDevant = piece.getSquare().getPozY() - 1;
         if (piece.getPlayer().isGoDown()) //check if player "go" down or up
         {
-            first = piece.getSquare().getPozY() + 1;//if yes, change value
+            ligneDevant = piece.getSquare().getPozY() + 1;//if yes, change value
         }
         
-        if (piece.isOut(first, first)) //out of bounds protection
+        if (piece.isOut(ligneDevant, ligneDevant)) //out of bounds protection
         {
             return list;//return empty list
         }
         
-        sqToMove = chessboard.getSquare(piece.getSquare().getPozX(), first);
-        
-        
-        
-        
-        if (sqToMove.getPiece() == null) //if next is free
-        {
-
-            list.add(chessboard.getSquares()[piece.getSquare().getPozX()][first]);
-            
-            if(piece.getSquare().getPozX() != chessboard.getTop()){
-            	list.add(chessboard.getSquares()[piece.getSquare().getPozX()-1][first]);
-            }
-            
-            if(piece.getSquare().getPozX() != chessboard.getBottom())
-            {
-            	list.add(chessboard.getSquares()[piece.getSquare().getPozX()+1][first]);            	
-            }
-            
-
-            
+        for (int i = -1; i<=1; i++){
+        	//on check le carrédevant à gauche, devant, et devant à droite
+        	if(!piece.isOut(piece.getSquare().getPozX() + i, ligneDevant)){
+        		Square sq = chessboard.getSquare(piece.getSquare().getPozX() + i, ligneDevant);
+        		list.add(sq);
+        		
+        	}
+        	
         }
-        
         
         return list;
 	}
