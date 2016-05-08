@@ -24,8 +24,10 @@ public class RandomPlacement implements PlacementStrat {
 		//Création des deux joueurs
 		Player player = plBlack;
 		player.goDown=true;
+		
 		Player player1 = plWhite;
 		Player[] players = { player, player1};
+		
 		Random random = new Random();
 		for (Player pl : players) {
 			// Création de toutes les pièces
@@ -50,32 +52,66 @@ public class RandomPlacement implements PlacementStrat {
 			Piece[] pieces = { sorcier, sorcier1, king, queen, rook, rook1, bishop, bishop1, pawn, pawn1,pawn2, pawn3,pawn4,pawn5,pawn6,pawn7, knight,
 					knight1 };
 			//Pour chaque pièce du tableau ci-dessus, on lui trouve un emplacement alétoire sur l'échéquier
-			for (Piece p : pieces) {
-				//Génération aléatoire des coordonnées x et y
-				int x = random.nextInt(8);
-				int y = random.nextInt(8);
-				while (_chess.getSquare(x, y).getPiece() != null) {
-					x = random.nextInt(8);
-					y = random.nextInt(8);
+
+			randomPlacing(random, pl, king, pieces);
+		}
+	}
+
+	
+	
+	
+	private void randomPlacing(Random random, Player pl, Piece king, Piece[] pieces) {
+		for (int cpt = 0; cpt < pieces.length; cpt++) {
+			Piece p = pieces[cpt];
+			//Génération aléatoire des coordonnées x et y
+			int x;
+			int y;
+			do {
+				x = random.nextInt(8);
+				y = random.nextInt(8);
+			}while (_chess.getSquare(x, y).getPiece() != null);
+			
+			//Cas particulier pour le roi
+			if (p == king) {
+				if (pl.getColor() == Colors.WHITE) {
+					_chess.kingWhite = (King) king;
+					_chess.getSquare(x, y).setPiece(_chess.kingWhite);
+				} else {
+					_chess.kingBlack = (King) king;
+					_chess.getSquare(x, y).setPiece(_chess.kingBlack);
 				}
-				//Cas particulier pour le roi
-				if (p == king) {
-					if (pl.getColor() == Colors.WHITE) {
-						_chess.kingWhite = (King) king;
-						_chess.getSquare(x, y).setPiece(_chess.kingWhite);
-					} else {
-						_chess.kingBlack = (King) king;
-						_chess.getSquare(x, y).setPiece(_chess.kingBlack);
-					}
-					
-				}
-				//Cas pour tous les autres pièces
-				else{
-					_chess.getSquare(x, y).setPiece(p);
+
+			}
+			//Cas pour toutes les autres pièces : si l'emplacement ne menace 
+			else{
+				_chess.getSquare(x, y).setPiece(p);
+				//si menace on replace la piece
+				if(threatingKing(p, pl, _chess)){
+					_chess.getSquare(x, y).setPiece(null);
+					cpt--;
 				}
 			}
 		}
 	}
 
-
+	/**
+	 * regarde si le placement de la piece cause la mise en echec du roi adverse
+	 * @param p : piece placee
+	 * @param pl : joueur a qui pl appartient
+	 * @param chess : chessboard
+	 * @return true si la piece menace le roi adverse
+	 */
+	private boolean threatingKing(Piece p, Player pl, Chessboard chess){
+		King otherKing;
+		if (pl.getColor() == Colors.WHITE) {
+			otherKing = chess.getKingBlack();
+		} else {
+			otherKing = chess.getKingWhite();
+		}
+		
+		if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
+			return true;
+		}
+		return false;
+	}
 }
