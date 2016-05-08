@@ -34,12 +34,17 @@ public class Move
     protected boolean wasEnPassant = false;
     protected Castling castlingMove = Castling.NONE;
     protected boolean wasPawnTwoFieldsMove = false;
+    protected String time;
+    protected String comment;
 
-    Move(Square from, Square to, Piece movedPiece, Piece takenPiece, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece)
+    Move(Square from, Square to, Piece movedPiece, Piece takenPiece, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece, String duree, String com)
     {
         this.from = from;
         this.to = to;
-
+        
+        this.time = duree;
+        this.comment = com;
+        
         this.movedPiece = movedPiece;
         this.takenPiece = takenPiece;
 

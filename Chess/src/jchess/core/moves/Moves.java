@@ -175,8 +175,13 @@ public class Moves extends AbstractTableModel
         }
 
     }
-
+    
     public void addMove(Square begin, Square end, boolean registerInHistory, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece)
+    {
+    	addMove(begin, end,registerInHistory, castlingMove, wasEnPassant,promotedPiece, null, null);
+    }
+
+    public void addMove(Square begin, Square end, boolean registerInHistory, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece, String time, String comment)
     {
         boolean wasCastling = castlingMove != Castling.NONE;
         String locMove = begin.getPiece().getSymbol();
@@ -244,7 +249,7 @@ public class Moves extends AbstractTableModel
 
         if (registerInHistory)
         {
-            Move moveToAdd = new Move(new Square(begin), new Square(end), begin.piece, end.piece, castlingMove, wasEnPassant, promotedPiece);
+            Move moveToAdd = new Move(new Square(begin), new Square(end), begin.piece, end.piece, castlingMove, wasEnPassant, promotedPiece, time, comment);
             this.moveBackStack.add(moveToAdd);
         }
     }
