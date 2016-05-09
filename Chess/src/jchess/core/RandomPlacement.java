@@ -75,19 +75,17 @@ public class RandomPlacement implements PlacementStrat {
 			if (p == king) {
 				if (pl.getColor() == Colors.WHITE) {
 					_chess.kingWhite = (King) king;
-					_chess.getSquare(x, y).setPiece(_chess.kingWhite);
 				} else {
 					_chess.kingBlack = (King) king;
-					_chess.getSquare(x, y).setPiece(_chess.kingBlack);
 				}
 
 			}
-			//Cas pour toutes les autres pièces : si l'emplacement ne menace 
-			else{
-				_chess.getSquare(x, y).setPiece(p);
+			
+			_chess.getSquare(x, y).setPiece(p);
 				//si menace on replace la piece
 				
-			}
+			System.out.println("youhou");
+			
 			if(threatingKing(p, pl, _chess)){
 				_chess.getSquare(x, y).setPiece(null);
 				cpt--;
@@ -110,7 +108,10 @@ public class RandomPlacement implements PlacementStrat {
 			otherKing = chess.getKingWhite();
 		}
 		
-		if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
+		/*if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
+			return true;
+		}*/
+		if(otherKing != null && otherKing.canMove(otherKing.getSquare().getPozX(), otherKing.getSquare().getPozY())){
 			return true;
 		}
 		return false;
