@@ -152,7 +152,7 @@ public class Chessboard {
 	 */
 	public void setPieces(String places, Player plWhite, Player plBlack) {
 		//ContextStrat context = new ContextStrat(new StandardPlacement());
-		ContextStrat context = new ContextStrat(new RandomPlacement());
+		ContextStrat context = new ContextStrat(new StandardPlacement());
 
 		if (places.equals("")) // if newGame
 		{

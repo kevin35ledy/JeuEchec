@@ -74,8 +74,8 @@ public abstract class Piece
 //    public static short getValue()
 //    {
 //        return value;
-//    }        
-    
+//    } 
+       
     public void addBehavior(Behavior behavior)
     {
         this.behaviors.add(behavior);

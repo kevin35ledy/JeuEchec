@@ -18,6 +18,7 @@ package jchess.display.windows;
 import jchess.JChessApp;
 import jchess.core.Game;
 import jchess.core.Player;
+import jchess.core.AI.GloutonAI;
 import jchess.core.AI.RandomAI;
 
 import javax.swing.*;
@@ -167,7 +168,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 //				case 1:
 //					pl2.setAI(new RandomAI());
 				default:
-					pl2.setAI(new RandomAI());
+					pl2.setAI(new GloutonAI());
 					;
 				}
 			}
