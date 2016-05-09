@@ -36,4 +36,9 @@ public class Knight extends Piece
         this.addBehavior(new KnightBehavior(this));
     }
     
+    @Override
+	public int getValue() {
+		return value;
+	}
+    
 }

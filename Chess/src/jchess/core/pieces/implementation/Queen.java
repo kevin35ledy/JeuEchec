@@ -50,5 +50,12 @@ public class Queen extends Piece
         this.addBehavior(new RookBehavior(this));
         this.addBehavior(new BishopBehavior(this));
     }
+
+	@Override
+	public int getValue() {
+		return value;
+	}
+    
+    
     
 }

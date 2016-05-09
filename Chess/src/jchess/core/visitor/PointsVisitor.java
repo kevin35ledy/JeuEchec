@@ -24,6 +24,7 @@ public class PointsVisitor implements Visitor {
 		// si il y a une pièce sur la case, on regarde à qui appartient la pièce
 		// et ensuite on ajoute les points
 		if (p != null) {
+			//score = p.getValue();
 			switch (p.getName()) {
 			case "King":
 				score += 1000;

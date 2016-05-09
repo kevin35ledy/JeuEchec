@@ -108,12 +108,12 @@ public class RandomPlacement implements PlacementStrat {
 			otherKing = chess.getKingWhite();
 		}
 		
-		/*if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
-			return true;
-		}*/
-		if(otherKing != null && otherKing.canMove(otherKing.getSquare().getPozX(), otherKing.getSquare().getPozY())){
+		if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
 			return true;
 		}
+//		if(otherKing != null && otherKing.canMove(otherKing.getSquare().getPozX(), otherKing.getSquare().getPozY())){
+//			return true;
+//		}
 		return false;
 	}
 }

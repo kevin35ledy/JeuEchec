@@ -70,4 +70,8 @@ public class Rook extends Piece
     {
         this.wasMotioned = wasMotioned;
     }
+    @Override
+	public int getValue() {
+		return value;
+	}
 }

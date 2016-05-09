@@ -18,5 +18,8 @@ public class Sorcier extends Piece{
         this.addBehavior(new KnightBehavior(this));
         this.addBehavior(new SorcierBehavior(this));
 	}
-
+	@Override
+	public int getValue() {
+		return value;
+	}
 }
