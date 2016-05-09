@@ -5,5 +5,5 @@ import jchess.core.Colors;
 
 public interface AIStrat {	
 	
-	public void move(Chessboard chess);
+	public void move(Chessboard chess, Colors color);
 }
