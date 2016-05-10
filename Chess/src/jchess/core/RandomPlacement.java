@@ -84,8 +84,6 @@ public class RandomPlacement implements PlacementStrat {
 			_chess.getSquare(x, y).setPiece(p);
 				//si menace on replace la piece
 				
-			System.out.println("youhou");
-			
 			if(threatingOtherKing(p, pl, _chess) || (p == king && !((King)p).isSafe())){
 				_chess.getSquare(x, y).setPiece(null);
 				cpt--;

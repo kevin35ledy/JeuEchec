@@ -19,6 +19,9 @@ public class RandomAI extends AIStrat {
 		// System.out.println("RANDOM AI");
 		List<Piece> pieces = getComputerPieces(chessboard, color);
 		Random random = new Random();
+		if(pieces.size() <0){
+			System.out.println(pieces.size());
+		}
 		int index = random.nextInt(pieces.size());
 		Piece p = pieces.get(index);
 		Set<Square> movesSet = p.getAllMoves();
