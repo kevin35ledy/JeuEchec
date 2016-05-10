@@ -117,12 +117,19 @@ public class KingBehavior extends Behavior
                             break; // exit
                         }
                     }
-                    sq = king.getChessboard().getSquares()[king.getSquare().getPozX() + 2][king.getSquare().getPozY()];
-                    sq1 = king.getChessboard().getSquares()[king.getSquare().getPozX() + 1][king.getSquare().getPozY()];
-                    if (canCastling) //can do castling when none of Sq,sq1 is checked
-                    {
-                        list.add(sq);
+                    
+                    if (king.getSquare().getPozX() + 2 <= king.getChessboard().getBottom()){
+                    	sq = king.getChessboard().getSquares()[king.getSquare().getPozX() + 2][king.getSquare().getPozY()];
+                    	
+                    	if (king.getSquare().getPozX() + 1 <= king.getChessboard().getBottom()){
+                    		sq1 = king.getChessboard().getSquares()[king.getSquare().getPozX() + 1][king.getSquare().getPozY()];
+                    		if (canCastling) //can do castling when none of Sq,sq1 is checked
+                    		{
+                    			list.add(sq);
+                    		}
+                    	}
                     }
+                    
                 }
             }
         }
