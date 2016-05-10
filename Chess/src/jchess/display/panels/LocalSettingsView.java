@@ -123,7 +123,7 @@ public class LocalSettingsView extends JPanel implements ActionListener {
 	public void update() {
 		// After the first round for each player, we started the clock
 		if (game.getTurnCounter() == 1 && timeGame.isSelected()) {
-			game.getGameClock().start();
+				game.getGameClock().start();
 			this.timeGame.setEnabled(false);
 			this.time4Game.setEnabled(false);
 		}

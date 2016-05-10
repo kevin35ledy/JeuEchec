@@ -9,7 +9,7 @@ import java.util.Iterator;
 import jchess.core.Chessboard;
 import jchess.core.Colors;
 import jchess.core.Square;
-import jchess.core.moves.Move;
+import jchess.core.moves.move_plus_decorator.Move;
 import jchess.core.pieces.Piece;
 
 public class RandomAI extends AIStrat {

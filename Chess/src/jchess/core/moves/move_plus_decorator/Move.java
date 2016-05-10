@@ -16,14 +16,14 @@
 /*
  * Author: Mateusz Sławomir Lach ( matlak, msl )
  */
-package jchess.core.moves;
+package jchess.core.moves.move_plus_decorator;
 
 import jchess.core.Chessboard;
 import jchess.core.pieces.Piece;
 import jchess.core.moves.Castling;
-import jchess.core.Square;
+import jchess.core.Square;;
 
-public class Move
+public class Move extends AbstractMove
 {
 	
     protected Square from = null;
@@ -37,13 +37,10 @@ public class Move
     protected String time;
     protected String comment;
 
-    Move(Square from, Square to, Piece movedPiece, Piece takenPiece, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece, String duree, String com)
+    public Move(Square from, Square to, Piece movedPiece, Piece takenPiece, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece, String duree, String com, Chessboard chess)
     {
-        this.from = from;
-        this.to = to;
+        super(from,to,duree,com, chess);
         
-        this.time = duree;
-        this.comment = com;
         
         this.movedPiece = movedPiece;
         this.takenPiece = takenPiece;
@@ -59,16 +56,6 @@ public class Move
         {
             this.promotedTo = promotedPiece;
         }
-    }
-
-    public Square getFrom()
-    {
-        return this.from;
-    }
-
-    public Square getTo()
-    {
-        return this.to;
     }
 
     public Piece getMovedPiece()
@@ -100,4 +87,40 @@ public class Move
     {
         return this.promotedTo;
     }
+
+	@Override
+	protected void commentMove(String com) {
+		// TODO Auto-generated method stub
+		this.comment = com;
+	}
+
+	@Override
+	protected void setTime(String time) {
+		// TODO Auto-generated method stub
+		this.time = time;
+	}
+
+	@Override
+	public void setXFrom(int xF) {
+		// TODO Auto-generated method stub
+		this.setXFrom(xF);
+	}
+
+	@Override
+	public void setYFrom(int yF) {
+		// TODO Auto-generated method stub
+		this.setYFrom(yF);
+	}
+
+	@Override
+	public void setXTo(int xTo) {
+		// TODO Auto-generated method stub
+		this.setXTo(xTo);
+	}
+
+	@Override
+	public void setYTo(int yTo) {
+		// TODO Auto-generated method stub
+		this.setYTo(yTo);
+	}
 }
