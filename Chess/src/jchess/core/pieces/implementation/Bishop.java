@@ -49,4 +49,9 @@ public class Bishop extends Piece
         this.symbol = "B";
         this.addBehavior(new BishopBehavior(this));
     }
+    
+    @Override
+	public int getValue() {
+		return value;
+	}
 }

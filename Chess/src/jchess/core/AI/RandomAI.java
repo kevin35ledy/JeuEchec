@@ -12,7 +12,7 @@ import jchess.core.Square;
 import jchess.core.moves.Move;
 import jchess.core.pieces.Piece;
 
-public class RandomAI implements AIStrat {
+public class RandomAI extends AIStrat {
 
 	@Override
 	public void move(Chessboard chessboard, Colors color) {
@@ -31,21 +31,7 @@ public class RandomAI implements AIStrat {
 		chessboard.move(p.getSquare(), end);
 	}
 
-	// On récupère toutes les pièces (qui ont le droit de bouger) de l'ordinateur
-	private List<Piece> getComputerPieces(Chessboard chess, Colors color) {
-		List<Piece> res = new ArrayList<Piece>();
-		Square[][] s = chess.getSquares();
-		for (int i = 0; i < chess.getSettings().getSize(); i++) {
-			for (int j = 0; j < chess.getSettings().getSize(); j++) {
-				if (s[i][j].getPiece() != null) {
-					Piece p = s[i][j].getPiece();
-					if (p.getPlayer().getColor() == color && p.getAllMoves().size() != 0) {
-						res.add(p);
-					}
-				}
-			}
-		}
-		return res;
-	}
+	
+	
 
 }

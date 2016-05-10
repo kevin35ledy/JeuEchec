@@ -71,11 +71,11 @@ public abstract class Piece
     /**
      * @return the value
      */
-    public static short getValue()
-    {
-        return value;
-    }        
-    
+//    public static short getValue()
+//    {
+//        return value;
+//    } 
+       
     public void addBehavior(Behavior behavior)
     {
         this.behaviors.add(behavior);
@@ -285,4 +285,6 @@ public abstract class Piece
     {
         this.name = name;
     }
+    
+    abstract public int getValue();
 }

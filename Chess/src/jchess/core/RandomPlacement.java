@@ -109,6 +109,9 @@ public class RandomPlacement implements PlacementStrat {
 		if(otherKing != null && p.getSquaresInRange().contains(otherKing.getSquare())){
 			return true;
 		}
+//		if(otherKing != null && otherKing.canMove(otherKing.getSquare().getPozX(), otherKing.getSquare().getPozY())){
+//			return true;
+//		}
 		return false;
 	}
 }
