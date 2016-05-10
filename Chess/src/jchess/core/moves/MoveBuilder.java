@@ -1,6 +1,7 @@
 package jchess.core.moves;
 
 import jchess.core.Chessboard;
+import jchess.core.moves.move_plus_decorator.AbstractMove;
 
 public abstract class MoveBuilder {
 	
@@ -9,7 +10,7 @@ public abstract class MoveBuilder {
 	protected int yFrom;
 	protected int xTo;
 	protected int yTo;
-	protected NewMove move;
+	protected AbstractMove move;
 	protected Chessboard board;
 	
 	protected MoveBuilder(){
@@ -27,7 +28,7 @@ public abstract class MoveBuilder {
 		this.move = new NewMove(board);
 	}
 	
-	public NewMove getMove(){
+	public AbstractMove getMove(){
 		return this.move;
 	}
 	

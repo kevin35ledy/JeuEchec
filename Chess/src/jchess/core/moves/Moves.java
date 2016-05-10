@@ -38,6 +38,8 @@ import javax.swing.JOptionPane;
 import jchess.core.Colors;
 import jchess.utils.Settings;
 import jchess.core.Square;
+import jchess.core.moves.move_plus_decorator.Move;
+
 import org.apache.log4j.Logger;
 
 /** Class representing the players moves, it's also checking
@@ -249,7 +251,7 @@ public class Moves extends AbstractTableModel
 
         if (registerInHistory)
         {
-            Move moveToAdd = new Move(new Square(begin), new Square(end), begin.piece, end.piece, castlingMove, wasEnPassant, promotedPiece, time, comment);
+            Move moveToAdd = new Move(new Square(begin), new Square(end), begin.piece, end.piece, castlingMove, wasEnPassant, promotedPiece, time, comment, this.game.getChessboard());
             this.moveBackStack.add(moveToAdd);
         }
     }

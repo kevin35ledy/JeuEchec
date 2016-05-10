@@ -10,6 +10,8 @@ import jchess.core.pieces.traits.behaviors.implementation.SorcierBehavior;
 
 public class Sorcier extends Piece{
 
+	protected static final short value = 7;
+	
 	public Sorcier(Chessboard chessboard, Player player) {
 		super(chessboard, player);
 		// TODO Auto-generated constructor stub
