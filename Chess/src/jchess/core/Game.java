@@ -762,7 +762,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener
 
 	public int getTurnCounter() {
 		// TODO Auto-generated method stub
-		return 0;
+		return cpt;
 	}
 }
 class ReadGameError extends Exception
