@@ -342,7 +342,6 @@ public class Game extends JPanel implements ComponentListener, MouseListener
         {
             activePlayer = getSettings().getPlayerWhite();
         }
-
         localSettingsView.update();
         this.getGameClock().switchClocks();
     }
