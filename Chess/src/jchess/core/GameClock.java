@@ -72,7 +72,11 @@ public class GameClock extends JPanel implements Runnable
      */
     public void start()
     {
-        this.thread.start();
+    		if(game.getTurnCounter()==0||game.getTurnCounter() ==1)
+			{
+    			System.out.println(game.getTurnCounter());
+    			this.thread.start();
+			}
     }
 
     /** Method to stop game clock

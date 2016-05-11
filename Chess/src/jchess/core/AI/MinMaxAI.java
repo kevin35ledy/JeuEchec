@@ -19,16 +19,16 @@ public class MinMaxAI extends AIStrat {
 		int cpt = 0;
 		int bestDiff = -1000, max = 0, min = 0, diff = 0;
 		List<Pair<Square, Square>> l = new ArrayList<Pair<Square, Square>>();
-		// pour chaque pièce de l'ordinateur qui peut bouger
+		// pour chaque piece de l'ordinateur qui peut bouger
 		for (Piece p : pieces) {
 			System.out.println("###### CPT = " + cpt + " ||| PIECE  = " + p.getName() + " ######");
 			cpt++;
 			int cptMove = 0;
-			// pour tous les mouvements possibles de la pièce
+			// pour tous les mouvements possibles de la piece
 			for (Square sq : p.getAllMoves()) {
-				System.out.println("### MOVE n°" + cptMove + " ###");
+				System.out.println("### MOVE ne" + cptMove + " ###");
 				cptMove++;
-				// s'il y a une pièce sur la case
+				// s'il y a une piece sur la case
 				if (sq.getPiece() != null)
 					max = sq.getPiece().getValue();
 				else
@@ -38,9 +38,11 @@ public class MinMaxAI extends AIStrat {
 				min = getMaxHuman(chess, cHuman);
 				chess.undo();
 				diff = max - min;
+				
 				System.err.println("MAX = " + max);
 				System.out.println("MIN = " + min);
 				System.out.println("DIFF = " + diff);
+				
 				if (diff == bestDiff) {
 					l.add(new Pair<Square, Square>(p.getSquare(), sq));
 				} else if (diff > bestDiff) {

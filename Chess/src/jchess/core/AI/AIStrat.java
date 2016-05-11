@@ -30,6 +30,28 @@ public abstract class AIStrat {
 		}
 		return res;
 	}
+	/**
+	 * recupere
+	 * @param chess
+	 * @param color
+	 * @return
+	 */
+	protected List<Piece> getPieces(Chessboard chess, Colors color) {
+		List<Piece> res = new ArrayList<Piece>();
+		Square[][] s = chess.getSquares();
+		for (int i = 0; i < chess.getSettings().getSize(); i++) {
+			for (int j = 0; j < chess.getSettings().getSize(); j++) {
+				if (s[i][j].getPiece() != null) {
+					Piece p = s[i][j].getPiece();
+					if (p.getPlayer().getColor() == color) {
+						res.add(p);
+					}
+				}
+			}
+		}
+		return res;
+	}
+	
 	protected void randomMove (Chessboard chessboard, Colors color) {
 		// System.out.println("RANDOM AI");
 		List<Piece> pieces = getComputerPieces(chessboard, color);
