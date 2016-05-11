@@ -44,6 +44,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 	JComboBox color;// to choose color of player
 	JRadioButton oponentComp;// choose oponent
 	JRadioButton oponentHuman;// choose oponent (human)
+	JRadioButton CompVsComp;
 	ButtonGroup oponentChoos;// group 4 radio buttons
 	JFrame localPanel;
 	JLabel compLevLab;
@@ -106,6 +107,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		if (target == this.oponentComp) // toggle enabled of controls depends of
 										// oponent (if computer)
 		{
+			this.firstName.setEnabled(true);
 			this.computerLevel.setEnabled(true);// enable level of computer
 												// abilities
 			this.secondName.setEnabled(false);// disable field with name of
@@ -113,9 +115,15 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		} else if (target == this.oponentHuman) // else if oponent will be HUMAN
 		{
 			this.computerLevel.setEnabled(false);// disable level of computer
-													// abilities
+			this.firstName.setEnabled(true);							// abilities
 			this.secondName.setEnabled(true);// enable field with name of
 												// player2
+		} else if (target == this.CompVsComp) // else if oponent will be HUMAN
+		{
+			this.computerLevel.setEnabled(false);
+			this.firstName.setEnabled(true);
+			this.secondName.setEnabled(true);
+	
 		} else if (target == this.okButton) // if clicked OK button (on finish)
 		{
 			if (this.firstName.getText().length() > 9) // make names short to 10
@@ -137,6 +145,9 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
 				return;
 			}
+//			if(this.CompVsComp.isSelected()){
+//				JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
+//			}
 			Game newGUI = JChessApp.getJavaChessView()
 					.addNewTab(this.firstName.getText() + " vs " + this.secondName.getText());
 			// newGUI.getChat().setEnabled(false);
@@ -179,6 +190,14 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 					pl2.setAI(new MinMaxAI());
 					;
 				}
+			}
+			if(this.CompVsComp.isSelected()){ //if Computer vs Computer is selected
+		    	System.out.println("PLAYER = " + pl1.getName());
+				pl2.setType(Player.playerTypes.computer);
+				pl1.setType(Player.playerTypes.computer);
+				pl1.setAI(new GloutonAI());
+				pl2.setAI(new RandomAI());
+				
 			}
 			sett.setUpsideDown(this.upsideDown.isSelected());
 			if (this.timeGame.isSelected()) // if timeGame is checked
@@ -231,16 +250,19 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 
 		this.oponentComp = new JRadioButton(Settings.lang("against_computer"), false);
 		this.oponentHuman = new JRadioButton(Settings.lang("against_other_human"), true);
+		this.CompVsComp = new JRadioButton(Settings.lang("Comptuer VS Computer"), false);
 
 		this.setLayout(gbl);
 		this.oponentComp.addActionListener(this);
 		this.oponentHuman.addActionListener(this);
+		this.CompVsComp.addActionListener(this);
 		this.okButton.addActionListener(this);
 
 		this.secondName.addActionListener(this);
 
 		this.oponentChoos.add(oponentComp);
 		this.oponentChoos.add(oponentHuman);
+		this.oponentChoos.add(CompVsComp);
 		this.computerLevel.setEnabled(true);
 		this.computerLevel.setMaximum(3);
 		this.computerLevel.setMinimum(1);
@@ -255,6 +277,10 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		this.add(oponentHuman);
 		this.gbc.gridx = 0;
 		this.gbc.gridy = 1;
+		this.gbl.setConstraints(CompVsComp, gbc);
+		this.add(CompVsComp);
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 0;
 		this.gbl.setConstraints(firstNameLab, gbc);
 		this.add(firstNameLab);
 		this.gbc.gridx = 0;
@@ -297,7 +323,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		this.gbl.setConstraints(okButton, gbc);
 		this.add(okButton);
 		this.oponentComp.setEnabled(true);// for now, becouse not implemented!
-
+		this.CompVsComp.setEnabled(true);
 	}
 
 	/**

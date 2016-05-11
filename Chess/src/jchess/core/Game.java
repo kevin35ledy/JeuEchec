@@ -298,6 +298,9 @@ public class Game extends JPanel implements ComponentListener, MouseListener
         if (activePlayer.getPlayerType() != Player.playerTypes.localUser)
         {
             this.blockedChessboard = true;
+            if(getSettings().getPlayerBlack().getPlayerType() == Player.playerTypes.computer && 
+            		getSettings().getPlayerWhite().getPlayerType() == Player.playerTypes.computer)
+            	this.nextMove();
         }
         //dirty hacks starts over here :) 
         //to fix rendering artefacts on first run
