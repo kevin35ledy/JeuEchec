@@ -166,9 +166,16 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			{
 				pl2.setType(Player.playerTypes.computer);
 				switch (this.computerLevel.getValue()) {
-//				case 1:
-//					pl2.setAI(new RandomAI());
+				case 1:
+					System.out.println("Algo Random");
+					pl2.setAI(new RandomAI());
+					break;
+				case 2:
+					System.out.println("Algo Glouton");
+					pl2.setAI(new GloutonAI());
+					break;
 				default:
+					System.out.println("Algo Minmax");
 					pl2.setAI(new MinMaxAI());
 					;
 				}
