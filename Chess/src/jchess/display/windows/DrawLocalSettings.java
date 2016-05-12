@@ -115,19 +115,26 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 												// abilities
 			this.secondName.setEnabled(false);// disable field with name of
 												// player2
+			this.chooseAI1.setEnabled(false);
+			this.chooseAI2.setEnabled(false);
 		} else if (target == this.oponentHuman) // else if oponent will be HUMAN
 		{
 			this.computerLevel.setEnabled(false);// disable level of computer
 			this.firstName.setEnabled(true); // abilities
 			this.secondName.setEnabled(true);// enable field with name of
 												// player2
+			this.chooseAI1.setEnabled(false);
+			this.chooseAI2.setEnabled(false);
 		} else if (target == this.CompVsComp) // else if oponent will be HUMAN
 		{
 			this.computerLevel.setEnabled(false);
 			this.firstName.setEnabled(false);
 			this.secondName.setEnabled(false);
+			this.chooseAI1.setEnabled(true);
+			this.chooseAI2.setEnabled(true);
 			this.firstName.setText("computer1");
 			this.secondName.setText("computer2");
+			//this.okButton.doClick();
 
 		} else if (target == this.okButton) // if clicked OK button (on finish)
 		{
@@ -203,9 +210,31 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
 				// if(this.chooseAI.getSelectedItem().equals("Random")){
-				pl1.setAI(new GloutonAI());
-				pl2.setAI(new RandomAI());
-
+				switch (this.chooseAI1.getSelectedItem().toString()){
+					case "Random":
+						pl1.setAI(new RandomAI());
+						break;
+					case "Glouton":
+						pl1.setAI(new GloutonAI());
+						break;
+					case "Min Max":
+						pl1.setAI(new MinMaxAI());
+						break;
+				}
+				switch (this.chooseAI2.getSelectedItem().toString()){
+				case "Random":
+					pl1.setAI(new RandomAI());
+					break;
+				case "Glouton":
+					pl1.setAI(new GloutonAI());
+					break;
+				case "Min Max":
+					pl1.setAI(new MinMaxAI());
+					break;
+			}
+			
+//			this.parent.setVisible(false);
+//			this.parent.dispose();
 			}
 			sett.setUpsideDown(this.upsideDown.isSelected());
 			if (this.timeGame.isSelected()) // if timeGame is checked
@@ -226,10 +255,10 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 					+ "\ntime 4 game: " + sett.getTimeForGame() + "\ntime limit set: " + sett.isTimeLimitSet()
 					+ "\nwhite on top?: " + sett.isUpsideDown() + "\n****************");// 4test
 
-			newGUI.newGame();// start new Game
 			this.parent.setVisible(false);// hide parent
 			JChessApp.getJavaChessView().getActiveTabGame().repaint();
 			JChessApp.getJavaChessView().setActiveTabGame(JChessApp.getJavaChessView().getNumberOfOpenedTabs() - 1);
+			newGUI.newGame();// start new Game
 		}
 	}
 
