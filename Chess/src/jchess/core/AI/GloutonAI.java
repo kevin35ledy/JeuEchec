@@ -18,71 +18,35 @@ public class GloutonAI extends AIStrat {
 
 		// Retrieving Computer Pieces (that can moves)
 		List<Piece> pieces = getComputerPieces(chess, color);
-		
+		Square begin = null, end = null;
+		int bestValue = -1000;
 
-		// Get the first piece that can take an opponent piece
-		Square begin = choosePiece(pieces, color);
-		Square end = getEndingSquare(begin, color);
-
-		// Actually move
-		chess.move(begin, end);
-	}
-
-	private Square getEndingSquare(Square begin, Colors color) {
-		Square result = null;
-		int pieceValue = 0;
-
-		for (Square s : begin.getPiece().getAllMoves())
-			if (s.getPiece() != null)
-				if (s.getPiece().getPlayer().getColor() != color)
-					if (s.getPiece().getValue() > pieceValue) {
-						pieceValue = s.getPiece().getValue();
-						result = s;
-					}
-
-		if (pieceValue != 0)
-			return result;
-
-		// If no square found with an opponent piece, choose randomly the move
-		List<Square> moves = new ArrayList<Square>(begin.getPiece().getAllMoves());
-		Random r = new Random();
-		int i = r.nextInt(moves.size());
-
-		return moves.get(i);
-	}
-
-	private Square choosePiece(List<Piece> pieces, Colors color) {
-		Square result = null;
-		int pieceValue = 0;
-
-		// For each piece of pieces
+		List<Pair<Square, Square>> bestMoves = new ArrayList<Pair<Square, Square>>();
+		// Pour toutes les pièces de l'ordinateur
 		for (Piece p : pieces) {
-			// For each square that p can move
-			for (Square s : p.getAllMoves()) {
-				// If we have a piece on this Square
-				if (s.getPiece() != null)
-					// And if this piece is an opponent piece
-					if (s.getPiece().getPlayer().getColor() != color) {
-					// If the value of the piece is superior of the current
-					// value
-					if (s.getPiece().getValue() > pieceValue) {
-					pieceValue = s.getPiece().getValue();
-					result = p.getSquare();
+			begin = p.getSquare();
+			// Pour tous les mouvements de chaque pièce
+			for (Square sq : p.getAllMoves()) {
+				// s'il y a une pièce adverse sur la case
+				if (sq.getPiece() != null && sq.getPiece().getPlayer().getColor() != color) {
+					if (sq.getPiece().getValue() == bestValue)
+						bestMoves.add(new Pair<Square, Square>(begin, sq));
+					else if (sq.getPiece().getValue() > bestValue) {
+						bestValue = sq.getPiece().getValue();
+						bestMoves.clear();
+						bestMoves.add(new Pair<Square, Square>(begin, sq));
 					}
-					}
+				}
 			}
 		}
-		// If we have found a piece to taken
-		if (pieceValue != 0)
-			return result;
-
-		// In case where no opponent pieces can be taken, randomly move like
-		// Random Strategy
-		Random r = new Random();
-		int i = r.nextInt(pieces.size());
-		result = pieces.get(i).getSquare();
-
-		return result;
+		if (bestMoves.size() > 0) {
+			Random r = new Random();
+			int index = r.nextInt(bestMoves.size());
+			begin = bestMoves.get(index).getFirst();
+			end = bestMoves.get(index).getSecond();
+			chess.move(begin, end);
+		} else
+			super.randomMove(chess, color);
 	}
 
 }

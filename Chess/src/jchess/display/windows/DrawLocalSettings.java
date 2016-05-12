@@ -121,8 +121,10 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		} else if (target == this.CompVsComp) // else if oponent will be HUMAN
 		{
 			this.computerLevel.setEnabled(false);
-			this.firstName.setEnabled(true);
-			this.secondName.setEnabled(true);
+			this.firstName.setEnabled(false);
+			this.secondName.setEnabled(false);
+			this.firstName.setText("computer1");
+			this.secondName.setText("computer2");
 	
 		} else if (target == this.okButton) // if clicked OK button (on finish)
 		{
@@ -159,7 +161,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			// if(this.firstName.getText().length() >9 )
 			// this.firstName.setText(this.firstName.getText(0,8));
 			// TODO: investigate and refactor
-			if (this.color.getActionCommand().equals("biały")) // if first
+			if (this.color.getSelectedItem().equals("White")) // if first
 																// player is
 																// white
 			{
