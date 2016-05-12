@@ -36,7 +36,7 @@ public class MinMaxAI extends AIStrat {
 				min = getMaxHuman(chess, cHuman);
 				chess.undo();
 				diff = max - min;
-								
+
 				if (diff == bestDiff) {
 					l.add(new Pair<Square, Square>(p.getSquare(), sq));
 				} else if (diff > bestDiff) {
@@ -48,11 +48,13 @@ public class MinMaxAI extends AIStrat {
 
 		}
 		// on joue le coup
-		Random r = new Random();
-		int index = r.nextInt(l.size());
-		begin = l.get(index).getFirst();
-		end = l.get(index).getSecond();
-		chess.move(begin, end);
+		if (l.size() > 0) {
+			Random r = new Random();
+			int index = r.nextInt(l.size());
+			begin = l.get(index).getFirst();
+			end = l.get(index).getSecond();
+			chess.move(begin, end);
+		}
 	}
 
 	public int getMaxHuman(Chessboard chess, Colors color) {

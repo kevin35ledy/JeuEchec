@@ -205,7 +205,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			}
 			if (this.CompVsComp.isSelected()) { // if Computer vs Computer is
 												// selected
-				System.out.println("PLAYER = " + pl1.getName());
+				//System.out.println("PLAYER = " + pl1.getName());
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
 				// if(this.chooseAI.getSelectedItem().equals("Random")){
@@ -222,13 +222,13 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				}
 				switch (this.chooseAI2.getSelectedItem().toString()){
 				case "Random":
-					pl1.setAI(new RandomAI());
+					pl2.setAI(new RandomAI());
 					break;
 				case "Glouton":
-					pl1.setAI(new GloutonAI());
+					pl2.setAI(new GloutonAI());
 					break;
 				case "Min Max":
-					pl1.setAI(new MinMaxAI());
+					pl2.setAI(new MinMaxAI());
 					break;
 			}
 			
