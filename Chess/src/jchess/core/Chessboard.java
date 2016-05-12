@@ -32,6 +32,7 @@ import jchess.core.pieces.Piece;
 
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 
 import jchess.JChessApp;
@@ -151,7 +152,7 @@ public class Chessboard {
 	 *            reference to black player
 	 */
 	public void setPieces(String places, Player plWhite, Player plBlack) {
-		//ContextStrat context = new ContextStrat(new StandardPlacement());
+		// ContextStrat context = new ContextStrat(new StandardPlacement());
 		ContextStrat context = new ContextStrat(new StandardPlacement());
 
 		if (places.equals("")) // if newGame
@@ -408,15 +409,25 @@ public class Chessboard {
 																															// Pawn
 			{
 				if (clearForwardHistory) {
-					String color = String
-							.valueOf(end.getPiece().getPlayer().getColor().getSymbolAsString().toUpperCase());
-					JChessView jch = JChessApp.getJavaChessView();
-					String newPiece = jch.showPawnPromotionBox(color); // return
-																		// name
-																		// of
-																		// new
-																		// piece
+					String newPiece = "";
+					if (end.getPiece().getPlayer().getPlayerType() != Player.playerTypes.computer) {
 
+						String color = String
+								.valueOf(end.getPiece().getPlayer().getColor().getSymbolAsString().toUpperCase());
+						JChessView jch = JChessApp.getJavaChessView();
+						newPiece = jch.showPawnPromotionBox(color); // return
+																			// name
+																			// of
+																			// new
+																			// piece
+
+					}
+					else{
+						String[] l = {"Queen", "Rook", "Bishop","Knight"};
+						Random r = new Random();
+						int index = r.nextInt(l.length);
+						newPiece = l[index];
+					}
 					Piece piece;
 					switch (newPiece) {
 					case "Queen":

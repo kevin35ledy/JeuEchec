@@ -14,9 +14,6 @@ public class GloutonAI extends AIStrat {
 	@Override
 	public void move(Chessboard chess, Colors color) {
 
-		System.out.println("Hey je suis Glouton MAIS JE JOUE !!!!");
-
-		// Retrieving Computer Pieces (that can moves)
 		List<Piece> pieces = getComputerPieces(chess, color);
 		Square begin = null, end = null;
 		int bestValue = -1000;
