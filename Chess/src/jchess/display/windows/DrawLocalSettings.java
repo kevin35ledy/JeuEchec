@@ -115,7 +115,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		} else if (target == this.oponentHuman) // else if oponent will be HUMAN
 		{
 			this.computerLevel.setEnabled(false);// disable level of computer
-			this.firstName.setEnabled(true);							// abilities
+			this.firstName.setEnabled(true); // abilities
 			this.secondName.setEnabled(true);// enable field with name of
 												// player2
 		} else if (target == this.CompVsComp) // else if oponent will be HUMAN
@@ -125,7 +125,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			this.secondName.setEnabled(false);
 			this.firstName.setText("computer1");
 			this.secondName.setText("computer2");
-	
+
 		} else if (target == this.okButton) // if clicked OK button (on finish)
 		{
 			if (this.firstName.getText().length() > 9) // make names short to 10
@@ -147,9 +147,9 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
 				return;
 			}
-//			if(this.CompVsComp.isSelected()){
-//				JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
-//			}
+			// if(this.CompVsComp.isSelected()){
+			// JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
+			// }
 			Game newGUI = JChessApp.getJavaChessView()
 					.addNewTab(this.firstName.getText() + " vs " + this.secondName.getText());
 			// newGUI.getChat().setEnabled(false);
@@ -193,13 +193,14 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 					;
 				}
 			}
-			if(this.CompVsComp.isSelected()){ //if Computer vs Computer is selected
-		    	System.out.println("PLAYER = " + pl1.getName());
+			if (this.CompVsComp.isSelected()) { // if Computer vs Computer is
+												// selected
+				System.out.println("PLAYER = " + pl1.getName());
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
 				pl1.setAI(new GloutonAI());
 				pl2.setAI(new RandomAI());
-				
+
 			}
 			sett.setUpsideDown(this.upsideDown.isSelected());
 			if (this.timeGame.isSelected()) // if timeGame is checked
@@ -269,63 +270,102 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		this.computerLevel.setMaximum(3);
 		this.computerLevel.setMinimum(1);
 
-		this.gbc.gridx = 0;
-		this.gbc.gridy = 0;
-		this.gbc.insets = new Insets(3, 3, 3, 3);
+		this.gbc.insets = new Insets(10, 10, 13, 13);
+
 		this.gbl.setConstraints(oponentComp, gbc);
 		this.add(oponentComp);
-		this.gbc.gridx = 1;
+
 		this.gbl.setConstraints(oponentHuman, gbc);
 		this.add(oponentHuman);
-		this.gbc.gridx = 0;
-		this.gbc.gridy = 1;
+
 		this.gbl.setConstraints(CompVsComp, gbc);
 		this.add(CompVsComp);
-		this.gbc.gridx = 0;
-		this.gbc.gridy = 0;
+
+//		this.gbc.insets = new Insets(50, 50, 50, 50);
+		this.gbc.gridy = 1;
+
 		this.gbl.setConstraints(firstNameLab, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		// this.gbc.weightx=0;
 		this.add(firstNameLab);
-		this.gbc.gridx = 0;
+
 		this.gbc.gridy = 2;
+
 		this.gbl.setConstraints(firstName, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 1;
+		// this.gbc.weightx=0.5;
 		this.add(firstName);
-		this.gbc.gridx = 1;
-		this.gbc.gridy = 2;
+
 		this.gbl.setConstraints(color, gbc);
-		this.add(color);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		// this.gbc.weightx=0.5;
 		this.gbc.gridx = 0;
+		this.add(color);
+
 		this.gbc.gridy = 3;
+
 		this.gbl.setConstraints(secondNameLab, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		// this.gbc.gridx = 0;
 		this.add(secondNameLab);
+
 		this.gbc.gridy = 4;
+
 		this.gbl.setConstraints(secondName, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		// this.gbc.gridx = 0;
+		// this.gbc.insets = new Insets(0, 0, 0, 0);
 		this.add(secondName);
+
 		this.gbc.gridy = 5;
-		this.gbc.insets = new Insets(0, 0, 0, 0);
+
 		this.gbl.setConstraints(compLevLab, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 0;
 		this.add(compLevLab);
+
 		this.gbc.gridy = 6;
+
 		this.gbl.setConstraints(computerLevel, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 0;
+		this.gbc.weightx = 10;
 		this.add(computerLevel);
+
 		this.gbc.gridy = 7;
+
 		this.gbl.setConstraints(upsideDown, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 0;
 		this.add(upsideDown);
+		// this.gbc.gridwidth = 1;
+
 		this.gbc.gridy = 8;
-		this.gbc.gridwidth = 1;
-		this.gbl.setConstraints(timeGame, gbc);
-		this.add(timeGame);
-		this.gbc.gridx = 1;
-		this.gbc.gridy = 8;
-		this.gbc.gridwidth = 1;
-		this.gbl.setConstraints(time4Game, gbc);
-		this.add(time4Game);
-		this.gbc.gridx = 1;
+
 		this.gbc.gridy = 9;
-		this.gbc.gridwidth = 0;
+
+
+		this.gbl.setConstraints(timeGame, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 2;
+		// this.gbc.gridwidth = 1;
+		this.add(timeGame);
+
+		this.gbl.setConstraints(time4Game, gbc);
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.gbc.gridx = 0;
+		// this.gbc.gridwidth = 0;
+		this.add(time4Game);
+		
+		this.gbc.gridy = 10;
+
 		this.gbl.setConstraints(okButton, gbc);
-		this.add(okButton);
+//		this.gbc.gridx = 3;
+		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.oponentComp.setEnabled(true);// for now, becouse not implemented!
 		this.CompVsComp.setEnabled(true);
+		this.add(okButton);
 	}
 
 	/**

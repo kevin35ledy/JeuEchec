@@ -39,13 +39,17 @@ public class GloutonAI extends AIStrat {
 				}
 			}
 		}
+		// dans le cas où des pièces sont atteignables, on choisit parmi les
+		// meilleurs moves
 		if (bestMoves.size() > 0) {
 			Random r = new Random();
 			int index = r.nextInt(bestMoves.size());
 			begin = bestMoves.get(index).getFirst();
 			end = bestMoves.get(index).getSecond();
 			chess.move(begin, end);
-		} else
+		}
+		// sinon on fait un move random
+		else
 			super.randomMove(chess, color);
 	}
 
