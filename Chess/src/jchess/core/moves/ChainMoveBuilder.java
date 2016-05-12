@@ -2,7 +2,7 @@ package jchess.core.moves;
 
 import jchess.core.Chessboard;
 
-public class ChainMoveBuilder extends MoveBuilder {
+public class ChainMoveBuilder extends AbstractMoveBuilder {
 
 	
 	public ChainMoveBuilder(Chessboard cb){
