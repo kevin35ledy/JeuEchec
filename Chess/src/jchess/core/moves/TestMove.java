@@ -13,7 +13,7 @@ import jchess.core.moves.move_plus_decorator.AbstractMove;
  * The history of moves is printing in a table
  * @param game The current game
  */
-public class NewMove extends AbstractMove{
+public class TestMove extends AbstractMove{
 	private Square sFrom;
 	private Square sTo;
 	protected Chessboard board;
@@ -23,7 +23,7 @@ public class NewMove extends AbstractMove{
     
     
     
-	public NewMove(Chessboard cboard){
+	public TestMove(Chessboard cboard){
 		super(null, null, "", "", cboard);
 		this.board = cboard;
 	}
