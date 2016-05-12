@@ -42,6 +42,8 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 
 	JDialog parent;// needet to close newGame window
 	JComboBox color;// to choose color of player
+	JComboBox chooseAI1; // to choose which AI
+	JComboBox chooseAI2; // to choose which AI
 	JRadioButton oponentComp;// choose oponent
 	JRadioButton oponentHuman;// choose oponent (human)
 	JRadioButton CompVsComp;
@@ -62,6 +64,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 	JCheckBox timeGame;
 	JComboBox time4Game;
 	String colors[] = { Settings.lang("white"), Settings.lang("black") };
+	String AI[] = { "Random", "Glouton", "Min Max" };
 
 	String times[] = { "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120", "200" };
 
@@ -172,6 +175,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				pl2.setName(this.firstName.getText());// set name of player
 				pl1.setName(this.secondName.getText());// set name of player
 			}
+
 			pl1.setType(Player.playerTypes.localUser);// set type of player
 			pl2.setType(Player.playerTypes.localUser);// set type of player
 			sett.setGameType(Settings.gameTypes.local);
@@ -198,6 +202,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				System.out.println("PLAYER = " + pl1.getName());
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
+				// if(this.chooseAI.getSelectedItem().equals("Random")){
 				pl1.setAI(new GloutonAI());
 				pl2.setAI(new RandomAI());
 
@@ -233,6 +238,8 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		// this.setA//choose oponent
 		this.parent = parent;
 		this.color = new JComboBox(colors);
+		this.chooseAI1 = new JComboBox(AI);
+		this.chooseAI2 = new JComboBox(AI);
 		this.gbl = new GridBagLayout();
 		this.gbc = new GridBagConstraints();
 		this.sep = new JSeparator();
@@ -253,7 +260,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 
 		this.oponentComp = new JRadioButton(Settings.lang("against_computer"), false);
 		this.oponentHuman = new JRadioButton(Settings.lang("against_other_human"), true);
-		this.CompVsComp = new JRadioButton(Settings.lang("Comptuer VS Computer"), false);
+		this.CompVsComp = new JRadioButton(Settings.lang("Computer VS Computer"), false);
 
 		this.setLayout(gbl);
 		this.oponentComp.addActionListener(this);
@@ -281,54 +288,44 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		this.gbl.setConstraints(CompVsComp, gbc);
 		this.add(CompVsComp);
 
-//		this.gbc.insets = new Insets(50, 50, 50, 50);
 		this.gbc.gridy = 1;
 
 		this.gbl.setConstraints(firstNameLab, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
-		// this.gbc.weightx=0;
 		this.add(firstNameLab);
 
 		this.gbc.gridy = 2;
 
 		this.gbl.setConstraints(firstName, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
-		this.gbc.gridx = 1;
-		// this.gbc.weightx=0.5;
 		this.add(firstName);
 
 		this.gbl.setConstraints(color, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
-		// this.gbc.weightx=0.5;
-		this.gbc.gridx = 0;
 		this.add(color);
+
+		this.gbl.setConstraints(chooseAI1, gbc);
+		this.add(chooseAI1);
 
 		this.gbc.gridy = 3;
 
 		this.gbl.setConstraints(secondNameLab, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
-		// this.gbc.gridx = 0;
 		this.add(secondNameLab);
 
 		this.gbc.gridy = 4;
 
 		this.gbl.setConstraints(secondName, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
-		// this.gbc.gridx = 0;
-		// this.gbc.insets = new Insets(0, 0, 0, 0);
 		this.add(secondName);
+
+		this.gbl.setConstraints(chooseAI2, gbc);
+		this.add(chooseAI2);
 
 		this.gbc.gridy = 5;
 
 		this.gbl.setConstraints(compLevLab, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.gbc.gridx = 0;
 		this.add(compLevLab);
 
 		this.gbc.gridy = 6;
 
 		this.gbl.setConstraints(computerLevel, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.gbc.gridx = 0;
 		this.gbc.weightx = 10;
 		this.add(computerLevel);
@@ -336,36 +333,30 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 		this.gbc.gridy = 7;
 
 		this.gbl.setConstraints(upsideDown, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+
 		this.gbc.gridx = 0;
 		this.add(upsideDown);
-		// this.gbc.gridwidth = 1;
 
 		this.gbc.gridy = 8;
 
 		this.gbc.gridy = 9;
 
-
 		this.gbl.setConstraints(timeGame, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.gbc.gridx = 2;
-		// this.gbc.gridwidth = 1;
+
 		this.add(timeGame);
 
 		this.gbl.setConstraints(time4Game, gbc);
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.gbc.gridx = 0;
-		// this.gbc.gridwidth = 0;
 		this.add(time4Game);
-		
+
 		this.gbc.gridy = 10;
 
 		this.gbl.setConstraints(okButton, gbc);
-//		this.gbc.gridx = 3;
-		// this.gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.add(okButton);
+
 		this.oponentComp.setEnabled(true);// for now, becouse not implemented!
 		this.CompVsComp.setEnabled(true);
-		this.add(okButton);
 	}
 
 	/**
