@@ -269,13 +269,12 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		return result;
 	}
 
-	
-	public void newGame(int timeForClocks){
+	public void newGame(int timeForClocks) {
 		getSettings().setTimeForGame((int) timeForClocks * 60);
 		getGameClock().setTimes(getSettings().getTimeForGame(), getSettings().getTimeForGame());
-		this.
-		newGame();
+		this.newGame();
 	}
+
 	/**
 	 * Method to Start new game
 	 *
@@ -288,9 +287,9 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 			if (getSettings().getPlayerBlack().getPlayerType() == Player.playerTypes.computer
 					&& getSettings().getPlayerWhite().getPlayerType() == Player.playerTypes.computer) {
-				//isOver();
+				// isOver();
 				this.nextMove();
-				//isOver();
+				// isOver();
 			}
 		}
 		// dirty hacks starts over here :)
@@ -358,15 +357,28 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 		} else if (activePlayer.getPlayerType() == Player.playerTypes.computer) {
 			this.blockedChessboard = true;
-//			boolean finish = isOver();
-//			if (!finish) {
-				activePlayer.move(chessboard);
-				boolean finish = isOver();
-				if (!finish)
-					this.nextMove();
-//			}
+			// boolean finish = isOver();
+			// if (!finish) {
+			activePlayer.move(chessboard);
+			boolean finish = isOver();
+			if (!finish)
+				this.nextMove();
+			// }
 			this.blockedChessboard = false;
 		}
+	}
+
+	private boolean only2Kings() {
+		boolean res = true;
+		Square[][] s = this.chessboard.squares;
+		for (int i = 0; i < this.settings.getSize(); i++) {
+			for (int j = 0; j < this.settings.getSize(); j++) {
+				if (s[i][j].getPiece() != null)
+					if (s[i][j].getPiece().getSymbol() != "K")
+						return false;
+			}
+		}
+		return res;
 	}
 
 	private boolean isOver() {
@@ -378,7 +390,11 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		} else {
 			king = getChessboard().getKingBlack();
 		}
-
+		if(only2Kings()){
+			this.endGame("Stalemate! Draw!");
+			res = true;
+		}
+		else{
 		switch (king.isCheckmatedOrStalemated()) {
 		case 0:
 			res = false;
@@ -390,7 +406,7 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.endGame("Stalemate! Draw!");
 			break;
 		}
-
+		}
 		return res;
 
 	}

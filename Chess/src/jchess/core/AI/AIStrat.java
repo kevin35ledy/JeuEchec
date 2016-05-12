@@ -57,16 +57,24 @@ public abstract class AIStrat {
 
 	protected void randomMove(Chessboard chessboard, Colors color) {
 		// System.out.println("RANDOM AI");
+		Square begin = null, end = null;
+		// On récupère toutes les pièces du computer qui bougent
 		List<Piece> pieces = getComputerPieces(chessboard, color);
-		Random random = new Random();
-		if (pieces.size() > 0) {
-			int index = random.nextInt(pieces.size());
-			Piece p = pieces.get(index);
-			Set<Square> movesSet = p.getAllMoves();
-			List<Square> moves = new ArrayList<Square>(movesSet);
-			int index2 = random.nextInt(moves.size());
-			Square end = moves.get(index2);
-			chessboard.move(p.getSquare(), end);
+		List<Pair<Square, Square>> possibleMoves = new ArrayList<Pair<Square, Square>>();
+		for (Piece p : pieces) {
+			begin = p.getSquare();
+			// Pour tous les mouvements de chaque pièce
+			for (Square sq : p.getAllMoves()) {
+				possibleMoves.add(new Pair<Square, Square>(begin, sq));
+			}
+
+		}
+		if (possibleMoves.size() > 0) {
+			Random r = new Random();
+			int index = r.nextInt(possibleMoves.size());
+			begin = possibleMoves.get(index).getFirst();
+			end = possibleMoves.get(index).getSecond();
+			chessboard.move(begin, end);
 		}
 	}
 }
