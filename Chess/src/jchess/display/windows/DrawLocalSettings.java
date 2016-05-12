@@ -157,13 +157,18 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
 				return;
 			}
+			// if(this.CompVsComp.isSelected()){
+			// JOptionPane.showMessageDialog(this, Settings.lang("fill_name"));
+			// }
 			Game newGUI = JChessApp.getJavaChessView()
 					.addNewTab(this.firstName.getText() + " vs " + this.secondName.getText());
-
+			// newGUI.getChat().setEnabled(false);
 			Settings sett = newGUI.getSettings();// sett local settings variable
 			Player pl1 = sett.getPlayerWhite();// set local player variable
 			Player pl2 = sett.getPlayerBlack();// set local player variable
 			sett.setGameMode(Settings.gameModes.newGame);
+			// if(this.firstName.getText().length() >9 )
+			// this.firstName.setText(this.firstName.getText(0,8));
 			// TODO: investigate and refactor
 			if (this.color.getSelectedItem().equals("White")) // if first
 																// player is
@@ -203,6 +208,7 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				System.out.println("PLAYER = " + pl1.getName());
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
+				// if(this.chooseAI.getSelectedItem().equals("Random")){
 				switch (this.chooseAI1.getSelectedItem().toString()){
 					case "Random":
 						pl1.setAI(new RandomAI());
@@ -226,6 +232,8 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 					break;
 			}
 			
+//			this.parent.setVisible(false);
+//			this.parent.dispose();
 			}
 			sett.setUpsideDown(this.upsideDown.isSelected());
 			if (this.timeGame.isSelected()) // if timeGame is checked
@@ -238,7 +246,6 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				sett.setTimeForGame((int) val * 60);// set time for game and
 													// mult it to seconds
 				newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
-				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
 				newGUI.getLocalSettingsView().getTime4Game().setSelectedIndex(this.time4Game.getSelectedIndex());
 				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
 			}
