@@ -16,6 +16,7 @@
 package jchess.display.windows;
 
 import jchess.JChessApp;
+import jchess.core.Chessboard;
 import jchess.core.Game;
 import jchess.core.Player;
 import jchess.core.AI.GloutonAI;
@@ -134,7 +135,6 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			this.chooseAI2.setEnabled(true);
 			this.firstName.setText("computer1");
 			this.secondName.setText("computer2");
-			//this.okButton.doClick();
 
 		} else if (target == this.okButton) // if clicked OK button (on finish)
 		{
@@ -163,7 +163,6 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			Game newGUI = JChessApp.getJavaChessView()
 					.addNewTab(this.firstName.getText() + " vs " + this.secondName.getText());
 			// newGUI.getChat().setEnabled(false);
-
 			Settings sett = newGUI.getSettings();// sett local settings variable
 			Player pl1 = sett.getPlayerWhite();// set local player variable
 			Player pl2 = sett.getPlayerBlack();// set local player variable
@@ -244,10 +243,14 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 																				// for
 																				// game
 				Integer val = new Integer(value);
-				sett.setTimeForGame((int) val * 60);// set time for game and
+				//sett.setTimeForGame((int) val * 60);// set time for game and
 													// mult it to seconds
-				newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
-				newGUI.getGameClock().start();
+				//newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
+				//newGUI.getGameClock().start();
+				newGUI.getSettings().setTimeForGame((int) val * 60);// set time for
+				// game and mult
+				// it to seconds
+				newGUI.getGameClock().setTimes(newGUI.getSettings().getTimeForGame(), newGUI.getSettings().getTimeForGame());
 			}
 			LOG.debug("this.time4Game.getActionCommand(): " + this.time4Game.getActionCommand());
 			// this.time4Game.getComponent(this.time4Game.getSelectedIndex());
