@@ -223,13 +223,13 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				}
 				switch (this.chooseAI2.getSelectedItem().toString()){
 				case "Random":
-					pl2.setAI(new RandomAI());
+					pl1.setAI(new RandomAI());
 					break;
 				case "Glouton":
-					pl2.setAI(new GloutonAI());
+					pl1.setAI(new GloutonAI());
 					break;
 				case "Min Max":
-					pl2.setAI(new MinMaxAI());
+					pl1.setAI(new MinMaxAI());
 					break;
 			}
 			
@@ -247,7 +247,9 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				sett.setTimeForGame((int) val * 60);// set time for game and
 													// mult it to seconds
 				newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
-				newGUI.getGameClock().start();
+				//newGUI.getGameClock().start();
+				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
+				newGUI.getLocalSettingsView().getTime4Game().setSelectedIndex(this.time4Game.getSelectedIndex());
 			}
 			LOG.debug("this.time4Game.getActionCommand(): " + this.time4Game.getActionCommand());
 			// this.time4Game.getComponent(this.time4Game.getSelectedIndex());
@@ -258,7 +260,11 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 			this.parent.setVisible(false);// hide parent
 			JChessApp.getJavaChessView().getActiveTabGame().repaint();
 			JChessApp.getJavaChessView().setActiveTabGame(JChessApp.getJavaChessView().getNumberOfOpenedTabs() - 1);
+			String value = this.times[this.time4Game.getSelectedIndex()];// set
+			// time for game
+			Integer val = new Integer(value);
 			newGUI.newGame();// start new Game
+			
 		}
 	}
 

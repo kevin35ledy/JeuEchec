@@ -39,7 +39,20 @@ public class LocalSettingsView extends JPanel implements ActionListener {
 	private static final Logger LOG = Logger.getLogger(DrawLocalSettings.class);
 
 	private JCheckBox timeGame;
+	
+	public JCheckBox getTimeGame() {
+		return timeGame;
+	}
+
+
+
 	private JComboBox time4Game;
+	public JComboBox getTime4Game() {
+		return time4Game;
+	}
+
+
+
 	private String times[] = { "1", "3", "5", "8", "10", "15", "20", "25", "30", "60", "120", "250" };
 
 	public LocalSettingsView(Game game) {
@@ -127,6 +140,9 @@ public class LocalSettingsView extends JPanel implements ActionListener {
 			this.timeGame.setEnabled(false);
 			this.time4Game.setEnabled(false);
 		}
+		if ( this.timeGame.isSelected()){
+			this.timeGame.doClick();
+		}
 	}
 
 	@Override
@@ -143,9 +159,7 @@ public class LocalSettingsView extends JPanel implements ActionListener {
 		} else if (clickedComponent == timeGame) // if timeGame is checked
 		{
 			String value = this.times[this.time4Game.getSelectedIndex()];// set
-			// time
-			// for
-			// game
+			// time for game
 			Integer val = new Integer(value);
 			game.getSettings().setTimeForGame((int) val * 60);// set time for
 			// game and mult
@@ -161,6 +175,8 @@ public class LocalSettingsView extends JPanel implements ActionListener {
 		refreshCheckBoxesState();
 		super.repaint();
 	}
+	
+	
 
 	private boolean isInitiatedCorrectly() {
 		return null != isUpsideDown && null != isDisplayLegalMovesEnabled && null != isRenderLabelsEnabled;
