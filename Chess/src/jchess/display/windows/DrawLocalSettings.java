@@ -243,16 +243,13 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 																				// for
 																				// game
 				Integer val = new Integer(value);
-				//sett.setTimeForGame((int) val * 60);// set time for game and
+				sett.setTimeForGame((int) val * 60);// set time for game and
 													// mult it to seconds
-
 				newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
-				//newGUI.getGameClock().start();
-				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
 				newGUI.getLocalSettingsView().getTime4Game().setSelectedIndex(this.time4Game.getSelectedIndex());
+				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
 			}
 			LOG.debug("this.time4Game.getActionCommand(): " + this.time4Game.getActionCommand());
-			// this.time4Game.getComponent(this.time4Game.getSelectedIndex());
 			LOG.debug("****************\nStarting new game: " + pl1.getName() + " vs. " + pl2.getName()
 					+ "\ntime 4 game: " + sett.getTimeForGame() + "\ntime limit set: " + sett.isTimeLimitSet()
 					+ "\nwhite on top?: " + sett.isUpsideDown() + "\n****************");// 4test
