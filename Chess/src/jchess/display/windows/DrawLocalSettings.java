@@ -16,6 +16,7 @@
 package jchess.display.windows;
 
 import jchess.JChessApp;
+import jchess.core.Chessboard;
 import jchess.core.Game;
 import jchess.core.Player;
 import jchess.core.AI.GloutonAI;
@@ -234,8 +235,9 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 																				// for
 																				// game
 				Integer val = new Integer(value);
-				sett.setTimeForGame((int) val * 60);// set time for game and
+				//sett.setTimeForGame((int) val * 60);// set time for game and
 													// mult it to seconds
+
 				newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
 				newGUI.getLocalSettingsView().getTimeGame().setSelected(true);
 				newGUI.getLocalSettingsView().getTime4Game().setSelectedIndex(this.time4Game.getSelectedIndex());
