@@ -7,6 +7,7 @@ public class ChainMoveBuilder extends AbstractMoveBuilder {
 	
 	public ChainMoveBuilder(Chessboard cb){
 		this.board = cb;
+		createMove();
 	}
 	
 	public ChainMoveBuilder xFrom(int xF) {
@@ -42,6 +43,20 @@ public class ChainMoveBuilder extends AbstractMoveBuilder {
 			move();
 		}
 		return this;	
+	}
+
+	@Override
+	public AbstractMoveBuilder from(String s) {
+		// TODO Auto-generated method stub
+		System.out.println("wrong class, you should use AlgebricMoveBuilder");
+		return null;
+	}
+
+	@Override
+	public AbstractMoveBuilder to(String s) {
+		// TODO Auto-generated method stub
+		System.out.println("wrong class, you should use AlgebricMoveBuilder");
+		return null;
 	}
 	
 
