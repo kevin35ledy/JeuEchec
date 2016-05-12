@@ -25,7 +25,7 @@ public abstract class MoveBuilder {
 	}
 	
 	public void createMove(){
-		this.move = new NewMove(board);
+		this.move = new TestMove(board);
 	}
 	
 	public AbstractMove getMove(){
