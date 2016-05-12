@@ -277,9 +277,9 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 			if (getSettings().getPlayerBlack().getPlayerType() == Player.playerTypes.computer
 					&& getSettings().getPlayerWhite().getPlayerType() == Player.playerTypes.computer) {
-				checkIfFinish();
+				//isOver();
 				this.nextMove();
-				checkIfFinish();
+				//isOver();
 			}
 		}
 		// dirty hacks starts over here :)
@@ -347,15 +347,19 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 		} else if (activePlayer.getPlayerType() == Player.playerTypes.computer) {
 			this.blockedChessboard = true;
-			checkIfFinish();
-			activePlayer.move(chessboard);
-			checkIfFinish();
-			this.nextMove();
+//			boolean finish = isOver();
+//			if (!finish) {
+				activePlayer.move(chessboard);
+				boolean finish = isOver();
+				if (!finish)
+					this.nextMove();
+//			}
 			this.blockedChessboard = false;
 		}
 	}
 
-	private void checkIfFinish() {
+	private boolean isOver() {
+		boolean res = true;
 		// checkmate or stalemate
 		King king;
 		if (this.activePlayer == getSettings().getPlayerWhite()) {
@@ -365,6 +369,9 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		}
 
 		switch (king.isCheckmatedOrStalemated()) {
+		case 0:
+			res = false;
+			break;
 		case 1:
 			this.endGame("Checkmate! " + king.getPlayer().getColor().toString() + " player lose!");
 			break;
@@ -372,6 +379,8 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.endGame("Stalemate! Draw!");
 			break;
 		}
+
+		return res;
 
 	}
 
