@@ -83,6 +83,10 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 
 	protected JTabbedPane tabPane;
 
+	public LocalSettingsView getLocalSettingsView() {
+		return localSettingsView;
+	}
+
 	protected LocalSettingsView localSettingsView;
 
 	public Game() {
@@ -265,6 +269,13 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		return result;
 	}
 
+	
+	public void newGame(int timeForClocks){
+		getSettings().setTimeForGame((int) timeForClocks * 60);
+		getGameClock().setTimes(getSettings().getTimeForGame(), getSettings().getTimeForGame());
+		this.
+		newGame();
+	}
 	/**
 	 * Method to Start new game
 	 *
