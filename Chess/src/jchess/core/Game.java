@@ -101,7 +101,6 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		int chessboardWidth = chessboardView.getChessboardWidht(true);
 		this.add(chessboardView);
 
-		// this.chessboard.
 		gameClock = new GameClock(this);
 		gameClock.setSize(new Dimension(200, 100));
 		gameClock.setLocation(new Point(500, 0));
@@ -287,10 +286,8 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 			if (getSettings().getPlayerBlack().getPlayerType() == Player.playerTypes.computer
 					&& getSettings().getPlayerWhite().getPlayerType() == Player.playerTypes.computer) {
-				// isOver();
 				this.nextMove();
-				// isOver();
-			}
+				}
 		}
 		// dirty hacks starts over here :)
 		// to fix rendering artefacts on first run
@@ -357,17 +354,18 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 			this.blockedChessboard = true;
 		} else if (activePlayer.getPlayerType() == Player.playerTypes.computer) {
 			this.blockedChessboard = true;
-			// boolean finish = isOver();
-			// if (!finish) {
 			activePlayer.move(chessboard);
 			boolean finish = isOver();
 			if (!finish)
 				this.nextMove();
-			// }
 			this.blockedChessboard = false;
 		}
 	}
 
+	/**
+	 * 
+	 * @return true if there are only 2 kings on the chessboard
+	 */
 	private boolean only2Kings() {
 		boolean res = true;
 		Square[][] s = this.chessboard.squares;
@@ -380,7 +378,11 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 		}
 		return res;
 	}
-
+	
+	/**
+	 * 
+	 * @return true if the game is over (draw or mate)
+	 */
 	private boolean isOver() {
 		boolean res = true;
 		// checkmate or stalemate
