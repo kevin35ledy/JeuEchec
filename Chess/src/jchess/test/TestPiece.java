@@ -67,8 +67,8 @@ public class TestPiece {
 
     @Test
     public void testInitBoard() throws Exception {
-        assertEquals(16, board.getAllPieces(Colors.WHITE).size());
-        assertEquals(16, board.getAllPieces(Colors.BLACK).size());
+        assertEquals(18, board.getAllPieces(Colors.WHITE).size());
+        assertEquals(18, board.getAllPieces(Colors.BLACK).size());
         // #3 bad API design
         // assertNotNull(board.getMoves());
     }
