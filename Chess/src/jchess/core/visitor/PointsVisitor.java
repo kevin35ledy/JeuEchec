@@ -45,7 +45,7 @@ public class PointsVisitor implements Visitor {
 				score += 3;
 				break;
 			case "Sorcier":
-				score += 1;
+				score += 7;
 				break;
 			}
 			if (sq.getPiece().getPlayer().getColor() == Colors.WHITE)
