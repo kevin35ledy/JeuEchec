@@ -116,8 +116,6 @@ public class JChessApp extends SingleFrameApplication {
         pl2.setType(Player.playerTypes.localUser);//set type of player
         sett.setGameType(Settings.gameTypes.local);
         
-        //newGUI.getGameClock().setTimes(sett.getTimeForGame(), sett.getTimeForGame());
-        //newGUI.getGameClock().start();
         LOG.debug("****************\nStarting new game: " + pl1.getName() + " vs. " + pl2.getName()
         + "\ntime 4 game: " + sett.getTimeForGame() + "\ntime limit set: " + sett.isTimeLimitSet()
         + "\nwhite on top?: " + sett.isUpsideDown() + "\n****************");//4test

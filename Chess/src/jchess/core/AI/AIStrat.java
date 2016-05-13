@@ -54,7 +54,12 @@ public abstract class AIStrat {
 		}
 		return res;
 	}
-
+	
+	/**
+	 * Effectue un déplacement alétoire parmi les déplacements possibles
+	 * @param chessboard
+	 * @param color
+	 */
 	protected void randomMove(Chessboard chessboard, Colors color) {
 		// System.out.println("RANDOM AI");
 		Square begin = null, end = null;

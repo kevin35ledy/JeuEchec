@@ -363,8 +363,8 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 	}
 
 	/**
-	 * 
-	 * @return true if there are only 2 kings on the chessboard
+	 * Method to know if there are only 2 kings on the chessboard
+	 * @return 
 	 */
 	private boolean only2Kings() {
 		boolean res = true;
@@ -380,8 +380,8 @@ public class Game extends JPanel implements ComponentListener, MouseListener {
 	}
 	
 	/**
-	 * 
-	 * @return true if the game is over (draw or mate)
+	 * Method to know if a game is over
+	 * @return 
 	 */
 	private boolean isOver() {
 		boolean res = true;

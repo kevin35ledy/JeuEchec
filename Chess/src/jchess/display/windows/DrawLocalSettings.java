@@ -190,25 +190,20 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 				pl2.setType(Player.playerTypes.computer);
 				switch (this.computerLevel.getValue()) {
 				case 1:
-					System.out.println("Algo Random");
 					pl2.setAI(new RandomAI());
 					break;
 				case 2:
-					System.out.println("Algo Glouton");
 					pl2.setAI(new GloutonAI());
 					break;
 				default:
-					System.out.println("Algo Minmax");
 					pl2.setAI(new MinMaxAI());
 					;
 				}
 			}
 			if (this.CompVsComp.isSelected()) { // if Computer vs Computer is
 												// selected
-				//System.out.println("PLAYER = " + pl1.getName());
 				pl2.setType(Player.playerTypes.computer);
 				pl1.setType(Player.playerTypes.computer);
-				// if(this.chooseAI.getSelectedItem().equals("Random")){
 				switch (this.chooseAI1.getSelectedItem().toString()){
 					case "Random":
 						pl1.setAI(new RandomAI());
@@ -231,9 +226,6 @@ public class DrawLocalSettings extends JPanel implements ActionListener, TextLis
 					pl2.setAI(new MinMaxAI());
 					break;
 			}
-			
-//			this.parent.setVisible(false);
-//			this.parent.dispose();
 			}
 			sett.setUpsideDown(this.upsideDown.isSelected());
 			if (this.timeGame.isSelected()) // if timeGame is checked
