@@ -26,16 +26,12 @@ import jchess.core.Square;;
 public class Move extends AbstractMove
 {
 	
-    protected Square from = null;
-    protected Square to = null;
     protected Piece movedPiece = null;
     protected Piece takenPiece = null;
     protected Piece promotedTo = null;
     protected boolean wasEnPassant = false;
     protected Castling castlingMove = Castling.NONE;
     protected boolean wasPawnTwoFieldsMove = false;
-    protected String time;
-    protected String comment;
 
     public Move(Square from, Square to, Piece movedPiece, Piece takenPiece, Castling castlingMove, boolean wasEnPassant, Piece promotedPiece, String duree, String com, Chessboard chess)
     {
@@ -103,24 +99,24 @@ public class Move extends AbstractMove
 	@Override
 	public void setXFrom(int xF) {
 		// TODO Auto-generated method stub
-		this.setXFrom(xF);
+		this.from.setPozX(xF);
 	}
 
 	@Override
 	public void setYFrom(int yF) {
 		// TODO Auto-generated method stub
-		this.setYFrom(yF);
+		this.from.setPozY(yF);
 	}
 
 	@Override
 	public void setXTo(int xTo) {
 		// TODO Auto-generated method stub
-		this.setXTo(xTo);
+		this.to.setPozX(xTo);
 	}
 
 	@Override
 	public void setYTo(int yTo) {
 		// TODO Auto-generated method stub
-		this.setYTo(yTo);
+		this.to.setPozY(yTo);
 	}
 }

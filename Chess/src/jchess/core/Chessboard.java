@@ -258,7 +258,7 @@ public class Chessboard {
 		end.piece = begin.piece;// for ending square set piece from beginin
 								// square
 		begin.piece = null;// make null piece for begining square
-
+		
 		if (end.getPiece().getName().equals("King")) {
 			if (!((King) end.piece).getWasMotioned()) {
 				((King) end.piece).setWasMotioned(true);

@@ -120,8 +120,11 @@ public class TestPiece {
     @Test
     public void testBishop1() throws Exception {
     	//TODO
-    	AbstractMoveBuilder chainmb = new ChainMoveBuilder(board);
-    	chainmb.xFrom(4).yFrom(6).xTo(5).yTo(6);
+    	ChainMoveBuilder chainmb = new ChainMoveBuilder(board);
+    	System.out.println(board.getSquare(4, 6).getPiece().getName());
+    	chainmb.xFrom(5).yFrom(6).xTo(5).yTo(5);
+    	System.out.println(board.getSquare(4, 6).getPiece().getName());
+    	System.out.println(board.getSquare(5, 6).getPiece().getName()+"\n");
         // e2 (4, 6) e4 (5, 4)
         //board.move(4, 6, 4, 4);
         

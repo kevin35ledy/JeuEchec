@@ -2,6 +2,7 @@ package jchess.core.moves;
 
 import jchess.core.Chessboard;
 import jchess.core.moves.move_plus_decorator.AbstractMove;
+import jchess.core.moves.move_plus_decorator.Move;
 
 public abstract class AbstractMoveBuilder {
 	
@@ -18,7 +19,7 @@ public abstract class AbstractMoveBuilder {
 	}
 	
 	public void createMove(){
-		this.move = new TestMove(board);
+		this.move = new Move(this.board.getSquare(0, 0), this.board.getSquare(0, 0), this.board.getKingBlack(), this.board.getKingWhite(), Castling.NONE, false, this.board.getKingBlack(), "", "", board);
 	}
 	
 	public AbstractMove getMove(){
