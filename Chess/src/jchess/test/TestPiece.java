@@ -121,21 +121,21 @@ public class TestPiece {
     public void testBishop1() throws Exception {
     	//TODO
     	ChainMoveBuilder chainmb = new ChainMoveBuilder(board);
-    	System.out.println(board.getSquare(4, 6).getPiece().getName());
+    	System.out.println(board.getSquare(5, 6).getPiece().getName());
     	chainmb.xFrom(5).yFrom(6).xTo(5).yTo(5);
-    	System.out.println(board.getSquare(4, 6).getPiece().getName());
+    	System.out.println(board.getSquare(5, 6).getPiece().getName());
     	System.out.println(board.getSquare(5, 6).getPiece().getName()+"\n");
-        // e2 (4, 6) e4 (5, 4)
-        //board.move(4, 6, 4, 4);
+        // f2 (5, 6) f4 (5, 4)
+        //board.move(5, 6, 5, 4);
         
-        // e7 (4, 1) e5 (4, 3)
+        // f7 (4, 1) f5 (4, 3)
     	AbstractMoveBuilder chainmb2 = new ChainMoveBuilder(board);
-    	chainmb2.xFrom(4).yFrom(1).xTo(4).yTo(3);
-        //board.move(4, 1, 4, 3);
+    	chainmb2.xFrom(5).yFrom(1).xTo(5).yTo(3);
+        //board.move(5, 1, 5, 3);
 
 
-        assertNull(board.getSquare(4, 1).getPiece()); // now the pawn is not present in e7
-        Piece p1 = board.getSquare(4, 3).getPiece(); // and there is a pawn in e5
+        assertNull(board.getSquare(5, 1).getPiece()); // now the pawn is not present in e7
+        Piece p1 = board.getSquare(5, 3).getPiece(); // and there is a pawn in e5
         assertTrue(p1 instanceof Pawn);
         assertEquals(Colors.BLACK, p1.getPlayer().getColor());
 

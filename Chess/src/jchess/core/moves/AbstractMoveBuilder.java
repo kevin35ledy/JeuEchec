@@ -12,10 +12,10 @@ public abstract class AbstractMoveBuilder {
 	
 	
 	protected boolean areAllPosSet(){
-		return (move.getFrom().getPozX() != -1 
-				&& move.getFrom().getPozY() != -1 
-				&& move.getTo().getPozX() != -1 
-				&& move.getTo().getPozY() != -1);
+		return (move.getFrom().getPozX() != 0
+				&& move.getFrom().getPozY() != 0 
+				&& move.getTo().getPozX() != 0 
+				&& move.getTo().getPozY() != 0);
 	}
 	
 	public void createMove(){
@@ -34,10 +34,10 @@ public abstract class AbstractMoveBuilder {
 		int yTo = this.move.getTo().getPozY();
 		
 		board.move(board.getSquare(xFrom, yFrom),board.getSquare(xTo, yTo) , true, true);
-		this.move.getFrom().setPozX(-1);
-		this.move.getFrom().setPozY(-1);
-		this.move.getTo().setPozX(-1);
-		this.move.getTo().setPozY(-1);
+		this.move.getFrom().setPozX(0);
+		this.move.getFrom().setPozY(0);
+		this.move.getTo().setPozX(0);
+		this.move.getTo().setPozY(0);
 	}
 	
 	
